@@ -12,3 +12,4 @@ C:\Users\AC\source\repos\QCSimulator\QCSimulator\obj\Debug\net10.0\refint\QCSimu
 C:\Users\AC\source\repos\QCSimulator\QCSimulator\obj\Debug\net10.0\QCSimulator.pdb
 C:\Users\AC\source\repos\QCSimulator\QCSimulator\obj\Debug\net10.0\QCSimulator.genruntimeconfig.cache
 C:\Users\AC\source\repos\QCSimulator\QCSimulator\obj\Debug\net10.0\ref\QCSimulator.dll
+C:\Users\AC\source\repos\QCSimulator\QCSimulator\obj\Debug\net10.0\QCSimulator.sourcelink.json

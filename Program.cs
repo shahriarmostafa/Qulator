@@ -2,6 +2,7 @@
 using System.Numerics;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.VisualBasic;
 
 namespace simpleClasses
 {
@@ -131,7 +132,7 @@ namespace simpleClasses
         }
     }
 
-    class StateVector
+    public class StateVector
     {
         public int NumberOfQubits { get; }
         public ComplexNumber[] Amplitudes { get; }
@@ -149,11 +150,21 @@ namespace simpleClasses
         }
         public StateVector(ComplexNumber[] amplitudes)
         {
-            NumberOfQubits = (int)Math.Log2(Amplitudes.Length);
             Amplitudes = new ComplexNumber[amplitudes.Length];
-            for (int i = 1; i < Amplitudes.Length; i++)
+            NumberOfQubits = (int)Math.Log2(Amplitudes.Length);
+            for (int i = 0; i < Amplitudes.Length; i++)
             {
                 Amplitudes[i] = amplitudes[i];
+            }
+        }
+
+        public StateVector(StateVector other)
+        {
+            NumberOfQubits = other.NumberOfQubits;
+            Amplitudes = new ComplexNumber[other.Amplitudes.Length];
+            for (int i = 0; i < Amplitudes.Length; i++)
+            {
+                Amplitudes[i] = new ComplexNumber(other.Amplitudes[i].Real, other.Amplitudes[i].Imaginary);
             }
         }
 
@@ -200,16 +211,25 @@ namespace simpleClasses
             double[] p = GetProbability(target);
             double p0 = p[0];
             double p1 = p[1];
+
             int measuredValue = randomNumber < p0 ? 0 : 1;
-            for(int i = 0; i < Amplitudes.Length; i++)
+
+            int mask = 1 << target;
+
+            for (int i = 0; i < Amplitudes.Length; i++)
             {
-                if ((int)(i / Math.Pow(2, target)) % 2 != measuredValue){
+                int bit = (i & mask) != 0 ? 1 : 0;
+
+                if (bit != measuredValue)
+                {
                     Amplitudes[i] = new ComplexNumber(0, 0);
                 }
             }
+
             Normalize();
             return measuredValue;
         }
+
         public int[] MeasureAllQubit()
         {
             double randomNumber = rnd.NextDouble();
@@ -252,7 +272,7 @@ namespace simpleClasses
                 for (int j = i; j < i + steps; j++)
                 {
                     int i0 = j;
-                    int i1 = j + steps;
+                    int i1 = i0 ^ (1 << target);
                     ComplexNumber a0 = gate.Get(0, 0).Multiply(Amplitudes[i0]).Add(gate.Get(0, 1).Multiply(Amplitudes[i1]));
                     ComplexNumber a1 = gate.Get(1, 0).Multiply(Amplitudes[i0]).Add(gate.Get(1, 1).Multiply(Amplitudes[i1]));
                     Amplitudes[i0] = a0;
@@ -263,30 +283,34 @@ namespace simpleClasses
 
         public void ApplySingleQubitGate(Matrix gate, int control, int target)
         {
-            
+            if (target >= NumberOfQubits || gate.Rows != 2 || gate.Cols != 2)
             {
-                if (target >= NumberOfQubits || gate.Rows != 2 || gate.Cols != 2) return;
+                                return;
 
-                int steps = (int)Math.Pow(2, target);
-
-                for (int i = 0; i < Amplitudes.Length; i += steps * 2)
+            }
+            int maskTarget = 1 << target;    
+            int maskControl = 1 << control;  
+            int length = Amplitudes.Length;
+            for (int j = 0; j < length; j++)
+            {
+                if ((j & maskControl) == 0)
                 {
-                    for (int j = i; j < i + steps; j++)
-                    {
-                        if((int) (j/Math.Pow(2, control)) %2== 1)
-                        {
-                            int i0 = j;
-                            int i1 = j + steps;
-                            ComplexNumber a0 = gate.Get(0, 0).Multiply(Amplitudes[i0]).Add(gate.Get(0, 1).Multiply(Amplitudes[i1]));
-                            ComplexNumber a1 = gate.Get(1, 0).Multiply(Amplitudes[i0]).Add(gate.Get(1, 1).Multiply(Amplitudes[i1]));
-                            Amplitudes[i0] = a0;
-                            Amplitudes[i1] = a1;
-                        }
-                    }
+                    continue;
                 }
-            
+                int i0 = j;
+                int i1 = j ^ maskTarget;  
+                if (i0 > i1)
+                {
+                    continue;
+                }
+                ComplexNumber a0 = Amplitudes[i0];
+                ComplexNumber a1 = Amplitudes[i1];
+                ComplexNumber new0 = gate.Get(0, 0).Multiply(a0).Add(gate.Get(0, 1).Multiply(a1));
+                ComplexNumber new1 = gate.Get(1, 0).Multiply(a0).Add(gate.Get(1, 1).Multiply(a1));
+                Amplitudes[i0] = new0;
+                Amplitudes[i1] = new1;
+            }
         }
-
     }
 
     public static class GateLibrary
@@ -329,7 +353,57 @@ namespace simpleClasses
         }
     }
 
-    public class Program
+
+    public class BellState
+    {
+        public static StateVector CreatePhiPlus()
+        {
+            StateVector entangledState = new StateVector(2);
+            entangledState.ApplySingleQubitGate(GateLibrary.H(), 0);
+            entangledState.ApplySingleQubitGate(GateLibrary.X(), 0, 1);
+            return entangledState;
+        }
+    }
+
+    public static class Teleportation
+    {
+        public static StateVector Teleport(StateVector unknown, StateVector bellState)
+        {
+            Matrix unknownMatrix = new Matrix(unknown.Amplitudes.Length, 1);
+            for(int i = 0; i < unknown.Amplitudes.Length; i++)
+            {
+                unknownMatrix.Set(i, 0, unknown.Amplitudes[i]);
+            }
+
+            Matrix bellMatrix = new Matrix(bellState.Amplitudes.Length, 1);
+            for(int i = 0; i < bellState.Amplitudes.Length; i++)
+            {
+                bellMatrix.Set(i, 0, bellState.Amplitudes[i]);
+            }
+            Matrix combinedMatrix = unknownMatrix.KroneckerProduct(bellMatrix);
+            ComplexNumber[] combinedAmplitudes = new ComplexNumber[combinedMatrix.Rows];
+            for(int i = 0; i < combinedMatrix.Rows; i++)
+            {
+                combinedAmplitudes[i] = combinedMatrix.Get(i, 0);
+            }
+            StateVector teleportedState = new StateVector(combinedAmplitudes);
+            teleportedState.ApplySingleQubitGate(GateLibrary.X(), 0, 1);
+            teleportedState.ApplySingleQubitGate(GateLibrary.H(), 0);
+            int m0 = teleportedState.MeasureSingleQubit(0);
+            int m1 = teleportedState.MeasureSingleQubit(1);
+            if(m1 == 1)
+            {
+                teleportedState.ApplySingleQubitGate(GateLibrary.X(), 2);
+            }
+            if(m0 == 1)
+            {
+                teleportedState.ApplySingleQubitGate(GateLibrary.Z(), 2);
+            }
+            return teleportedState;
+        }
+    }
+
+public class Program
     {
         static void PrintState(string label, StateVector sv)
         {
@@ -345,67 +419,34 @@ namespace simpleClasses
 
         static void Main(string[] args)
         {
-            // ========= Test 1: single qubit, X gate on |0> -> |1> =========
-            Console.WriteLine("=== Test 1: single qubit X on |0> ===");
-            StateVector sv1 = new StateVector(1); // |0>
-            PrintState("Initial state |0>:", sv1);
+            // Step 1: Create a Bell state (|Φ+> = (|00> + |11>) / √2)
+            StateVector bellState = BellState.CreatePhiPlus();
+            Console.WriteLine("=== BELL STATE |Φ+> BEFORE MEASUREMENT ===");
+            PrintState("Bell State |Φ+>:", bellState);
 
-            sv1.ApplySingleQubitGate(GateLibrary.X(), 0);
-            PrintState("After X gate (should be |1>):", sv1);
+            // Step 2: Create an unknown state (for example, |0> state)
+            StateVector unknownState = new StateVector(1); // Creating a state with 1 qubit, which is initialized to |0>
+            Console.WriteLine("=== UNKNOWN STATE ===");
+            unknownState.ApplySingleQubitGate(GateLibrary.H(), 0);
+            unknownState.ApplySingleQubitGate(GateLibrary.Y(), 0);
+            PrintState("Unknown State:", unknownState);
 
-            int m1 = sv1.MeasureSingleQubit(0);
-            Console.WriteLine($"Measured value (expected 1): {m1}");
-            PrintState("State after measurement:", sv1);
+            // Step 3: Teleport the unknown state using the Bell state
+            Console.WriteLine("\n=== TELEPORTING STATE ===");
+            StateVector teleportedState = Teleportation.Teleport(unknownState, bellState);
 
-            // ========= Test 2: single qubit, H gate -> superposition =========
-            Console.WriteLine("=== Test 2: single qubit H on |0> ===");
-            StateVector sv2 = new StateVector(1); // |0>
-            PrintState("Initial state |0>:", sv2);
+            // Step 4: Print the final state after teleportation
+            Console.WriteLine("\n=== TELEPORTED STATE ===");
+            PrintState("Teleported State:", teleportedState);
 
-            sv2.ApplySingleQubitGate(GateLibrary.H(), 0);
-            PrintState("After H gate (should be superposition):", sv2);
+            // Step 5: Measure the teleported state
+            int[] result = teleportedState.MeasureAllQubit();
+            Console.WriteLine("=== MEASUREMENT RESULT ===");
+            Console.WriteLine($"Measured: {string.Join("", result)}");
 
-            double[] probs2 = sv2.GetProbability(0);
-            Console.WriteLine($"P(0) ≈ {probs2[0]}, P(1) ≈ {probs2[1]}");
-            int m2 = sv2.MeasureSingleQubit(0);
-            Console.WriteLine($"Measured value (0 or 1 with ~50% prob): {m2}");
-            PrintState("State after measurement:", sv2);
-
-            // ========= Test 3: two qubits, H on qubit 0 =========
-            Console.WriteLine("=== Test 3: 2 qubits, H on qubit 0 ===");
-            StateVector sv3 = new StateVector(2); // |00>
-            PrintState("Initial state |00>:", sv3);
-
-            // Apply H to qubit 0 (least significant bit in your ApplySingleQubitGate logic)
-            sv3.ApplySingleQubitGate(GateLibrary.H(), 0);
-            PrintState("After H on qubit 0:", sv3);
-
-            double[] probs3_q0 = sv3.GetProbability(0);
-            double[] probs3_q1 = sv3.GetProbability(1);
-            Console.WriteLine($"Qubit 0: P(0) = {probs3_q0[0]}, P(1) = {probs3_q0[1]}");
-            Console.WriteLine($"Qubit 1: P(0) = {probs3_q1[0]}, P(1) = {probs3_q1[1]}");
-
-            int[] all3 = sv3.MeasureAllQubit();
-            Console.WriteLine("Measured all qubits (bitstring): " + string.Join("", all3));
-            PrintState("State after measuring all qubits:", sv3);
-
-            // ========= Test 4: matrix multiplication & Kronecker product =========
-            Console.WriteLine("=== Test 4: Matrix and Kronecker tests ===");
-            Matrix xGate = GateLibrary.X();
-            Matrix hGate = GateLibrary.H();
-
-            // X * X should be identity
-            Matrix xx = xGate.Multiply(xGate);
-            Console.WriteLine("X * X (should act like identity on |0>):");
-            StateVector sv4 = new StateVector(1);
-            sv4.ApplySingleQubitGate(xx, 0);
-            PrintState("After XX on |0>:", sv4);
-
-            // H ⊗ H (Kronecker product)
-            Matrix hTensorH = hGate.KroneckerProduct(hGate);
-            Console.WriteLine("H ⊗ H matrix elements:");
-            hTensorH.PrintMatrix();
-            Console.WriteLine();
+            // Step 6: Print the final collapsed state after measurement
+            Console.WriteLine("\n=== FINAL STATE AFTER MEASUREMENT ===");
+            PrintState("Collapsed State:", teleportedState);
 
             Console.ReadKey();
         }
@@ -414,4 +455,60 @@ namespace simpleClasses
 
 
 
+
+
+
+
+
+
+
+
+    //Important followups (make your project feel pro)
+
+
+
+
+
+
+    //Save/Load circuits as JSON (circuit = list of gates with targets and time steps).
+
+    //Circuit runner(time-step execution) — support stepping through columns of gates and visualizing collapse after measurements.
+
+    //Stretch / CV-boosters
+
+    //Teleportation demo — uses H, CNOT and measurements; visually impressive and shows understanding.
+
+    //Parameterised rotation gates(Rx, Ry, Rz) and Rx(theta) as Matrix factory.
+
+    //Performance small wins — use 1<<target everywhere, reuse temporaries, and consider Parallel.For for larger registers.
+
+    //If you want a single next action to show the team right now:
+
+    //Implement CNOT + a Bell state demo (H on qubit 0, CNOT control = 0 target= 1, then MeasureAllQubit and show correlated results).
+
+    //Tell me which of the above you want me to produce next(I can give you the exact code for CNOT, ApplyControlledGate, Bell demo, or tests). Which one?
+
+
+//    QuantumSim/
+//│
+//├── Math/
+//│   ├── ComplexNumber.cs
+//│   ├── Matrix.cs
+//│
+//├── Core/
+//│   ├── QubitRegister.cs
+//│   ├── QuantumGate.cs
+//│   ├── GateLibrary.cs
+//│   ├── QuantumCircuit.cs
+//│   ├── MeasurementEngine.cs
+//│
+//├── Algorithms/
+//│   ├── BellState.cs
+//│   ├── Teleportation.cs
+//│
+//├── Tests/
+//│   ├── GateTests.cs
+//│   ├── BellStateTests.cs
+//│
+//└── Program.cs(Console sandbox for now)
 
