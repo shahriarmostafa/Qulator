@@ -311,6 +311,89 @@ namespace simpleClasses
                 Amplitudes[i1] = new1;
             }
         }
+        public void ApplySingleQubitGate(Matrix gate, int control, int control2, int target)
+        {
+            if (target >= NumberOfQubits || gate.Rows != 2 || gate.Cols != 2)
+                return;
+
+            int maskTarget  = 1 << target;
+            int maskControl = 1 << control;
+            int maskControl2 = 1 << control2;
+
+            int length = Amplitudes.Length;
+
+            for (int j = 0; j < length; j++)
+            {
+                if ((j & maskControl) == 0 || (j & maskControl2) == 0)
+                {
+                    continue;
+                }
+                int i0 = j;
+                int i1 = j ^ maskTarget;
+                if (i0 > i1)
+                {
+                    continue;
+                }
+
+                ComplexNumber a0 = Amplitudes[i0];
+                ComplexNumber a1 = Amplitudes[i1];
+
+                ComplexNumber new0 = gate.Get(0, 0).Multiply(a0).Add(gate.Get(0, 1).Multiply(a1));
+                ComplexNumber new1 = gate.Get(1, 0).Multiply(a0).Add(gate.Get(1, 1).Multiply(a1));
+
+                Amplitudes[i0] = new0;
+                Amplitudes[i1] = new1;
+            }
+        }
+        public void ApplySingleQubitGate4Controls(Matrix gate,
+                                          int control1,
+                                          int control2,
+                                          int control3,
+                                          int control4,
+                                          int target)
+{
+    if (target >= NumberOfQubits || gate.Rows != 2 || gate.Cols != 2)
+        return;
+
+    int maskT = 1 << target;
+    int mask1 = 1 << control1;
+    int mask2 = 1 << control2;
+    int mask3 = 1 << control3;
+    int mask4 = 1 << control4;
+
+    int length = Amplitudes.Length;
+
+    for (int j = 0; j < length; j++)
+    {
+        // All controls must be 1
+        if ((j & mask1) == 0 || (j & mask2) == 0 ||
+            (j & mask3) == 0 || (j & mask4) == 0)
+        {
+            continue;
+        }
+
+        int i0 = j;
+        int i1 = j ^ maskT;
+
+        if (i0 > i1)
+        {
+            continue;
+        }
+
+        ComplexNumber a0 = Amplitudes[i0];
+        ComplexNumber a1 = Amplitudes[i1];
+
+        ComplexNumber new0 = gate.Get(0, 0).Multiply(a0).Add(gate.Get(0, 1).Multiply(a1));
+        ComplexNumber new1 = gate.Get(1, 0).Multiply(a0).Add(gate.Get(1, 1).Multiply(a1));
+
+        Amplitudes[i0] = new0;
+        Amplitudes[i1] = new1;
+    }
+}
+
+
+
+
     }
 
     public static class GateLibrary
@@ -515,8 +598,138 @@ namespace simpleClasses
         {
             return decodedBits;
         }
+        public StateVector GetState()
+        {
+            return state;
+        }
     }
     
+
+    public static class GroverOracle4Q
+{
+    // Fixed to 4 qubits
+    public static void ApplyOracle(StateVector state, int targetIndex)
+    {
+        int nQubits = state.NumberOfQubits;
+        if (nQubits != 4)
+        {
+            throw new InvalidOperationException("GroverOracle4Q supports exactly 4 qubits.");
+        }
+
+        int maxIndex = (1 << nQubits) - 1;
+        if (targetIndex < 0 || targetIndex > maxIndex)
+        {
+            throw new ArgumentOutOfRangeException(nameof(targetIndex),
+                $"Marked index must be between 0 and {maxIndex}.");
+        }
+
+        // Decode marked index bits (LSB first)
+        bool[] bits = new bool[nQubits];
+        for (int q = 0; q < nQubits; q++)
+        {
+            bits[q] = ((targetIndex >> q) & 1) == 1;
+        }
+
+        // X on qubits where target bit = 0 so target -> 1111
+        for (int q = 0; q < nQubits; q++)
+        {
+            if (!bits[q])
+            {
+                state.ApplySingleQubitGate(GateLibrary.X(), q);
+            }
+        }
+
+        // 4‑controlled Z: controls 0,1,2,3 and target also 3 (phase flip on |1111>)
+        state.ApplySingleQubitGate4Controls(GateLibrary.Z(), 0, 1, 2, 3, 3);
+
+        // Undo X
+        for (int q = 0; q < nQubits; q++)
+        {
+            if (!bits[q])
+            {
+                state.ApplySingleQubitGate(GateLibrary.X(), q);
+            }
+        }
+    }
+}
+
+public static class GroverDiffuser4Q
+{
+    public static void ApplyDiffuser(StateVector state)
+    {
+        int nQubits = state.NumberOfQubits;
+        if (nQubits != 4)
+        {
+            throw new InvalidOperationException("GroverDiffuser4Q supports exactly 4 qubits.");
+        }
+
+        // H on all
+        for (int q = 0; q < nQubits; q++)
+        {
+            state.ApplySingleQubitGate(GateLibrary.H(), q);
+        }
+
+        // X on all
+        for (int q = 0; q < nQubits; q++)
+        {
+            state.ApplySingleQubitGate(GateLibrary.X(), q);
+        }
+
+        // 4‑controlled Z about |0000> (after X)
+        state.ApplySingleQubitGate4Controls(GateLibrary.Z(), 0, 1, 2, 3, 3);
+
+        // Undo X
+        for (int q = 0; q < nQubits; q++)
+        {
+            state.ApplySingleQubitGate(GateLibrary.X(), q);
+        }
+
+        // Undo H
+        for (int q = 0; q < nQubits; q++)
+        {
+            state.ApplySingleQubitGate(GateLibrary.H(), q);
+        }
+    }
+}
+
+public static class GroverSearch4Q
+{
+    // Returns bits as [q3, q2, q1, q0]
+    public static int[] RunGrover4Qubits(int markedIndex)
+    {
+        int nQubits = 4;
+        int iterations = 3;
+
+        int maxIndex = (1 << nQubits) - 1;
+        if (markedIndex < 0 || markedIndex > maxIndex)
+        {
+            throw new ArgumentOutOfRangeException(nameof(markedIndex),
+                $"Marked index must be between 0 and {maxIndex}.");
+        }
+
+        StateVector state = new StateVector(nQubits);
+
+        // Uniform superposition
+        for (int q = 0; q < nQubits; q++)
+        {
+            state.ApplySingleQubitGate(GateLibrary.H(), q);
+        }
+
+        // Grover iterations
+        for (int k = 0; k < iterations; k++)
+        {
+            GroverOracle4Q.ApplyOracle(state, markedIndex);
+            GroverDiffuser4Q.ApplyDiffuser(state);
+        }
+
+        // Measure all qubits
+        int[] measured = state.MeasureAllQubit();
+        return measured;
+    }
+}
+
+
+
 
 public class Program
     {

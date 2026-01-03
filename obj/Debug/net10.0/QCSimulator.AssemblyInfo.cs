@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QCSimulator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+563b143d3a4276b380f7a78015ae34cdbeedf566")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4862d2dcef2619da5a79325d43e503db2f009bc0")]
 [assembly: System.Reflection.AssemblyProductAttribute("QCSimulator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QCSimulator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
