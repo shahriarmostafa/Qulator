@@ -21,3 +21,14 @@ C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.Properties.Resources.resources
 C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.Registration.resources
 C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.csproj.GenerateResource.cache
 C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.csproj.CoreCompileInputs.cache
+C:\Project\Qulator\bin\Debug\Sim1Test.exe.config
+C:\Project\Qulator\bin\Debug\Sim1Test.exe
+C:\Project\Qulator\bin\Debug\Sim1Test.pdb
+C:\Project\Qulator\obj\Debug\Sim1Test.csproj.AssemblyReference.cache
+C:\Project\Qulator\obj\Debug\Sim1Test.Login.resources
+C:\Project\Qulator\obj\Debug\Sim1Test.Properties.Resources.resources
+C:\Project\Qulator\obj\Debug\Sim1Test.Registration.resources
+C:\Project\Qulator\obj\Debug\Sim1Test.csproj.GenerateResource.cache
+C:\Project\Qulator\obj\Debug\Sim1Test.csproj.CoreCompileInputs.cache
+C:\Project\Qulator\obj\Debug\Sim1Test.exe
+C:\Project\Qulator\obj\Debug\Sim1Test.pdb
