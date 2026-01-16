@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,12 +47,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\BellStates.cs" />
+    <Compile Include="Algorithms\GroverSearch\GroverDiffuser4Q.cs" />
+    <Compile Include="Algorithms\GroverSearch\GroverOracle4Q.cs" />
+    <Compile Include="Algorithms\GroverSearch\GroverSearch4Q.cs" />
+    <Compile Include="Algorithms\SuperdenseCoding.cs" />
+    <Compile Include="Algorithms\Teleportation.cs" />
+    <Compile Include="Circuit\GateLibrary.cs" />
+    <Compile Include="Circuit\StateVector.cs" />
+    <Compile Include="Components\BellStateComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\BellStateComponent.Designer.cs">
+      <DependentUpon>BellStateComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ProbabilityBarsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ProbabilityBarsControl.Designer.cs">
+      <DependentUpon>ProbabilityBarsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\SuperdenseCodingComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\SuperdenseCodingComponent.Designer.cs">
+      <DependentUpon>SuperdenseCodingComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\TeleportationComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\TeleportationComponent.Designer.cs">
+      <DependentUpon>TeleportationComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="core codes.cs" />
+    <Compile Include="Database.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Maths\ComplexNumber.cs" />
+    <Compile Include="Maths\Matrix.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration.cs">
@@ -60,6 +97,39 @@
     <Compile Include="Registration.Designer.cs">
       <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Rendering\QuantumGateRender.cs" />
+    <Compile Include="SimulationPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SimulationPage.Designer.cs">
+      <DependentUpon>SimulationPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="weatherforcasting.cs" />
+    <Compile Include="WeatherForcastingBackend\QuantumWeatherForeCaster.cs" />
+    <Compile Include="WeatherForcastingBackend\WeatherAnalysisHelpers.cs" />
+    <Compile Include="WeatherForcastingBackend\WeatherForecaster.cs" />
+    <Compile Include="WeatherForcastingBackend\WeatherInput.cs" />
+    <Compile Include="WeatherForcastingBackend\WeatherResult.cs" />
+    <Compile Include="WeatherForcastingBackend\WeatherSimulationEngine.cs" />
+    <Compile Include="WeatherForcastingBackend\WeatherSimulationResult.cs" />
+    <Compile Include="WeatherForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WeatherForm.Designer.cs">
+      <DependentUpon>WeatherForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Components\BellStateComponent.resx">
+      <DependentUpon>BellStateComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ProbabilityBarsControl.resx">
+      <DependentUpon>ProbabilityBarsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\SuperdenseCodingComponent.resx">
+      <DependentUpon>SuperdenseCodingComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\TeleportationComponent.resx">
+      <DependentUpon>TeleportationComponent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,6 +145,13 @@
     <EmbeddedResource Include="Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SimulationPage.resx">
+      <DependentUpon>SimulationPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeatherForm.resx">
+      <DependentUpon>WeatherForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include=".gitignore" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -88,5 +165,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
