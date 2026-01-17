@@ -37,6 +37,8 @@
             this.lblCloudyProbValue = new System.Windows.Forms.Label();
             this.lblClearProbLabel = new System.Windows.Forms.Label();
             this.lblClearProbValue = new System.Windows.Forms.Label();
+            this.lblFogProbLabel = new System.Windows.Forms.Label();
+            this.lblFogProbValue = new System.Windows.Forms.Label();
             this.pnlVariations = new System.Windows.Forms.Panel();
             this.lblVarTitle = new System.Windows.Forms.Label();
             this.lblVar1Label = new System.Windows.Forms.Label();
@@ -71,9 +73,9 @@
             this.pnlCurrent.SuspendLayout();
             this.pnlSimulation.SuspendLayout();
             this.SuspendLayout();
-
-
-
+            // 
+            // pnlHeader
+            // 
             this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(130)))), ((int)(((byte)(220)))));
             this.pnlHeader.Controls.Add(this.lblTitle);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
@@ -81,9 +83,9 @@
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(966, 72);
             this.pnlHeader.TabIndex = 0;
-
-
- 
+            // 
+            // lblTitle
+            // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.White;
@@ -92,9 +94,9 @@
             this.lblTitle.Size = new System.Drawing.Size(433, 32);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Weather Forecast – Simulation Mode";
-
-
-
+            // 
+            // pnlInputs
+            // 
             this.pnlInputs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(45)))), ((int)(((byte)(80)))));
             this.pnlInputs.Controls.Add(this.lblInputsTitle);
             this.pnlInputs.Controls.Add(this.lblTemp);
@@ -109,9 +111,9 @@
             this.pnlInputs.Name = "pnlInputs";
             this.pnlInputs.Size = new System.Drawing.Size(280, 230);
             this.pnlInputs.TabIndex = 1;
-
-
-
+            // 
+            // lblInputsTitle
+            // 
             this.lblInputsTitle.AutoSize = true;
             this.lblInputsTitle.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblInputsTitle.ForeColor = System.Drawing.Color.White;
@@ -120,9 +122,9 @@
             this.lblInputsTitle.Size = new System.Drawing.Size(54, 20);
             this.lblInputsTitle.TabIndex = 0;
             this.lblInputsTitle.Text = "Inputs";
-
-
-
+            // 
+            // lblTemp
+            // 
             this.lblTemp.AutoSize = true;
             this.lblTemp.ForeColor = System.Drawing.Color.Gainsboro;
             this.lblTemp.Location = new System.Drawing.Point(16, 45);
@@ -130,16 +132,16 @@
             this.lblTemp.Size = new System.Drawing.Size(115, 19);
             this.lblTemp.TabIndex = 1;
             this.lblTemp.Text = "Temperature (°C):";
-
-
-
+            // 
+            // txtTemp
+            // 
             this.txtTemp.Location = new System.Drawing.Point(160, 42);
             this.txtTemp.Name = "txtTemp";
             this.txtTemp.Size = new System.Drawing.Size(90, 25);
             this.txtTemp.TabIndex = 2;
-
-
-
+            // 
+            // lblHumidity
+            // 
             this.lblHumidity.AutoSize = true;
             this.lblHumidity.ForeColor = System.Drawing.Color.Gainsboro;
             this.lblHumidity.Location = new System.Drawing.Point(16, 80);
@@ -147,16 +149,16 @@
             this.lblHumidity.Size = new System.Drawing.Size(91, 19);
             this.lblHumidity.TabIndex = 3;
             this.lblHumidity.Text = "Humidity (%):";
-
-
-
+            // 
+            // txtHumidity
+            // 
             this.txtHumidity.Location = new System.Drawing.Point(160, 77);
             this.txtHumidity.Name = "txtHumidity";
             this.txtHumidity.Size = new System.Drawing.Size(90, 25);
             this.txtHumidity.TabIndex = 4;
-
-
- 
+            // 
+            // lblPressure
+            // 
             this.lblPressure.AutoSize = true;
             this.lblPressure.ForeColor = System.Drawing.Color.Gainsboro;
             this.lblPressure.Location = new System.Drawing.Point(16, 115);
@@ -164,15 +166,16 @@
             this.lblPressure.Size = new System.Drawing.Size(99, 19);
             this.lblPressure.TabIndex = 5;
             this.lblPressure.Text = "Pressure (hPa):";
-
-
+            // 
+            // txtPressure
+            // 
             this.txtPressure.Location = new System.Drawing.Point(160, 112);
             this.txtPressure.Name = "txtPressure";
             this.txtPressure.Size = new System.Drawing.Size(90, 25);
             this.txtPressure.TabIndex = 6;
-
-
-
+            // 
+            // lblWind
+            // 
             this.lblWind.AutoSize = true;
             this.lblWind.ForeColor = System.Drawing.Color.Gainsboro;
             this.lblWind.Location = new System.Drawing.Point(16, 150);
@@ -180,16 +183,16 @@
             this.lblWind.Size = new System.Drawing.Size(119, 19);
             this.lblWind.TabIndex = 7;
             this.lblWind.Text = "Wind speed (m/s):";
-
-
-
+            // 
+            // txtWind
+            // 
             this.txtWind.Location = new System.Drawing.Point(160, 147);
             this.txtWind.Name = "txtWind";
             this.txtWind.Size = new System.Drawing.Size(90, 25);
             this.txtWind.TabIndex = 8;
-
-
-
+            // 
+            // pnlProbabilities
+            // 
             this.pnlProbabilities.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(95)))), ((int)(((byte)(75)))));
             this.pnlProbabilities.Controls.Add(this.lblProbTitle);
             this.pnlProbabilities.Controls.Add(this.lblRainProbLabel);
@@ -198,13 +201,15 @@
             this.pnlProbabilities.Controls.Add(this.lblCloudyProbValue);
             this.pnlProbabilities.Controls.Add(this.lblClearProbLabel);
             this.pnlProbabilities.Controls.Add(this.lblClearProbValue);
+            this.pnlProbabilities.Controls.Add(this.lblFogProbLabel);
+            this.pnlProbabilities.Controls.Add(this.lblFogProbValue);
             this.pnlProbabilities.Location = new System.Drawing.Point(320, 90);
             this.pnlProbabilities.Name = "pnlProbabilities";
             this.pnlProbabilities.Size = new System.Drawing.Size(251, 230);
             this.pnlProbabilities.TabIndex = 2;
-
-
-
+            // 
+            // lblProbTitle
+            // 
             this.lblProbTitle.AutoSize = true;
             this.lblProbTitle.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblProbTitle.ForeColor = System.Drawing.Color.White;
@@ -213,9 +218,9 @@
             this.lblProbTitle.Size = new System.Drawing.Size(168, 20);
             this.lblProbTitle.TabIndex = 0;
             this.lblProbTitle.Text = "Condition Probabilities";
-
-
- 
+            // 
+            // lblRainProbLabel
+            // 
             this.lblRainProbLabel.AutoSize = true;
             this.lblRainProbLabel.ForeColor = System.Drawing.Color.Gainsboro;
             this.lblRainProbLabel.Location = new System.Drawing.Point(16, 50);
@@ -223,8 +228,9 @@
             this.lblRainProbLabel.Size = new System.Drawing.Size(38, 19);
             this.lblRainProbLabel.TabIndex = 1;
             this.lblRainProbLabel.Text = "Rain:";
-
-
+            // 
+            // lblRainProbValue
+            // 
             this.lblRainProbValue.AutoSize = true;
             this.lblRainProbValue.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblRainProbValue.ForeColor = System.Drawing.Color.White;
@@ -233,8 +239,9 @@
             this.lblRainProbValue.Size = new System.Drawing.Size(34, 20);
             this.lblRainProbValue.TabIndex = 2;
             this.lblRainProbValue.Text = "--%";
-
- 
+            // 
+            // lblCloudyProbLabel
+            // 
             this.lblCloudyProbLabel.AutoSize = true;
             this.lblCloudyProbLabel.ForeColor = System.Drawing.Color.Gainsboro;
             this.lblCloudyProbLabel.Location = new System.Drawing.Point(16, 90);
@@ -242,8 +249,9 @@
             this.lblCloudyProbLabel.Size = new System.Drawing.Size(55, 19);
             this.lblCloudyProbLabel.TabIndex = 3;
             this.lblCloudyProbLabel.Text = "Cloudy:";
-
- 
+            // 
+            // lblCloudyProbValue
+            // 
             this.lblCloudyProbValue.AutoSize = true;
             this.lblCloudyProbValue.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblCloudyProbValue.ForeColor = System.Drawing.Color.White;
@@ -252,9 +260,9 @@
             this.lblCloudyProbValue.Size = new System.Drawing.Size(34, 20);
             this.lblCloudyProbValue.TabIndex = 4;
             this.lblCloudyProbValue.Text = "--%";
-
-
-
+            // 
+            // lblClearProbLabel
+            // 
             this.lblClearProbLabel.AutoSize = true;
             this.lblClearProbLabel.ForeColor = System.Drawing.Color.Gainsboro;
             this.lblClearProbLabel.Location = new System.Drawing.Point(16, 130);
@@ -262,35 +270,9 @@
             this.lblClearProbLabel.Size = new System.Drawing.Size(43, 19);
             this.lblClearProbLabel.TabIndex = 5;
             this.lblClearProbLabel.Text = "Clear:";
-
-
-            this.lblFogProbLabel = new System.Windows.Forms.Label();
-            this.lblFogProbValue = new System.Windows.Forms.Label();
-
-
-            this.lblFogProbLabel.AutoSize = true;
-            this.lblFogProbLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lblFogProbLabel.Location = new System.Drawing.Point(16, 170);   // a bit lower than Clear
-            this.lblFogProbLabel.Name = "lblFogProbLabel";
-            this.lblFogProbLabel.Size = new System.Drawing.Size(33, 19);
-            this.lblFogProbLabel.Text = "Fog:";
-
-
-
-            this.lblFogProbValue.AutoSize = true;
-            this.lblFogProbValue.ForeColor = System.Drawing.Color.White;
-            this.lblFogProbValue.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.lblFogProbValue.Location = new System.Drawing.Point(120, 168);
-            this.lblFogProbValue.Name = "lblFogProbValue";
-            this.lblFogProbValue.Size = new System.Drawing.Size(32, 20);
-            this.lblFogProbValue.Text = "--%";
-
-            // add to panel
-            this.pnlProbabilities.Controls.Add(this.lblFogProbLabel);
-            this.pnlProbabilities.Controls.Add(this.lblFogProbValue);
-
-
-
+            // 
+            // lblClearProbValue
+            // 
             this.lblClearProbValue.AutoSize = true;
             this.lblClearProbValue.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblClearProbValue.ForeColor = System.Drawing.Color.White;
@@ -299,8 +281,30 @@
             this.lblClearProbValue.Size = new System.Drawing.Size(34, 20);
             this.lblClearProbValue.TabIndex = 6;
             this.lblClearProbValue.Text = "--%";
-
-
+            // 
+            // lblFogProbLabel
+            // 
+            this.lblFogProbLabel.AutoSize = true;
+            this.lblFogProbLabel.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblFogProbLabel.Location = new System.Drawing.Point(16, 170);
+            this.lblFogProbLabel.Name = "lblFogProbLabel";
+            this.lblFogProbLabel.Size = new System.Drawing.Size(35, 19);
+            this.lblFogProbLabel.TabIndex = 7;
+            this.lblFogProbLabel.Text = "Fog:";
+            // 
+            // lblFogProbValue
+            // 
+            this.lblFogProbValue.AutoSize = true;
+            this.lblFogProbValue.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblFogProbValue.ForeColor = System.Drawing.Color.White;
+            this.lblFogProbValue.Location = new System.Drawing.Point(120, 168);
+            this.lblFogProbValue.Name = "lblFogProbValue";
+            this.lblFogProbValue.Size = new System.Drawing.Size(34, 20);
+            this.lblFogProbValue.TabIndex = 8;
+            this.lblFogProbValue.Text = "--%";
+            // 
+            // pnlVariations
+            // 
             this.pnlVariations.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(55)))), ((int)(((byte)(110)))));
             this.pnlVariations.Controls.Add(this.lblVarTitle);
             this.pnlVariations.Controls.Add(this.lblVar1Label);
@@ -313,7 +317,9 @@
             this.pnlVariations.Name = "pnlVariations";
             this.pnlVariations.Size = new System.Drawing.Size(294, 230);
             this.pnlVariations.TabIndex = 3;
-
+            // 
+            // lblVarTitle
+            // 
             this.lblVarTitle.AutoSize = true;
             this.lblVarTitle.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblVarTitle.ForeColor = System.Drawing.Color.White;
@@ -322,8 +328,9 @@
             this.lblVarTitle.Size = new System.Drawing.Size(87, 20);
             this.lblVarTitle.TabIndex = 0;
             this.lblVarTitle.Text = "Predictions";
-
-
+            // 
+            // lblVar1Label
+            // 
             this.lblVar1Label.AutoSize = true;
             this.lblVar1Label.ForeColor = System.Drawing.Color.Gainsboro;
             this.lblVar1Label.Location = new System.Drawing.Point(16, 50);
@@ -331,8 +338,9 @@
             this.lblVar1Label.Size = new System.Drawing.Size(78, 19);
             this.lblVar1Label.TabIndex = 1;
             this.lblVar1Label.Text = "Variation 1:";
-
- 
+            // 
+            // lblVar1Value
+            // 
             this.lblVar1Value.AutoSize = true;
             this.lblVar1Value.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblVar1Value.ForeColor = System.Drawing.Color.White;
@@ -341,8 +349,9 @@
             this.lblVar1Value.Size = new System.Drawing.Size(21, 19);
             this.lblVar1Value.TabIndex = 2;
             this.lblVar1Value.Text = "--";
-
-
+            // 
+            // lblVar2Label
+            // 
             this.lblVar2Label.AutoSize = true;
             this.lblVar2Label.ForeColor = System.Drawing.Color.Gainsboro;
             this.lblVar2Label.Location = new System.Drawing.Point(16, 90);
@@ -350,8 +359,9 @@
             this.lblVar2Label.Size = new System.Drawing.Size(78, 19);
             this.lblVar2Label.TabIndex = 3;
             this.lblVar2Label.Text = "Variation 2:";
-
-
+            // 
+            // lblVar2Value
+            // 
             this.lblVar2Value.AutoSize = true;
             this.lblVar2Value.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblVar2Value.ForeColor = System.Drawing.Color.White;
@@ -360,8 +370,9 @@
             this.lblVar2Value.Size = new System.Drawing.Size(21, 19);
             this.lblVar2Value.TabIndex = 4;
             this.lblVar2Value.Text = "--";
-
-
+            // 
+            // lblVar3Label
+            // 
             this.lblVar3Label.AutoSize = true;
             this.lblVar3Label.ForeColor = System.Drawing.Color.Gainsboro;
             this.lblVar3Label.Location = new System.Drawing.Point(16, 130);
@@ -369,8 +380,9 @@
             this.lblVar3Label.Size = new System.Drawing.Size(78, 19);
             this.lblVar3Label.TabIndex = 5;
             this.lblVar3Label.Text = "Variation 3:";
-
-
+            // 
+            // lblVar3Value
+            // 
             this.lblVar3Value.AutoSize = true;
             this.lblVar3Value.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblVar3Value.ForeColor = System.Drawing.Color.White;
@@ -379,8 +391,9 @@
             this.lblVar3Value.Size = new System.Drawing.Size(21, 19);
             this.lblVar3Value.TabIndex = 6;
             this.lblVar3Value.Text = "--";
- 
-
+            // 
+            // pnlCurrent
+            // 
             this.pnlCurrent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(70)))), ((int)(((byte)(105)))));
             this.pnlCurrent.Controls.Add(this.lblCurrentTitle);
             this.pnlCurrent.Controls.Add(this.lblCurrentTempLabel);
@@ -395,8 +408,9 @@
             this.pnlCurrent.Name = "pnlCurrent";
             this.pnlCurrent.Size = new System.Drawing.Size(359, 180);
             this.pnlCurrent.TabIndex = 4;
-
-
+            // 
+            // lblCurrentTitle
+            // 
             this.lblCurrentTitle.AutoSize = true;
             this.lblCurrentTitle.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblCurrentTitle.ForeColor = System.Drawing.Color.White;
@@ -405,8 +419,9 @@
             this.lblCurrentTitle.Size = new System.Drawing.Size(206, 20);
             this.lblCurrentTitle.TabIndex = 0;
             this.lblCurrentTitle.Text = "Current Condition Summary";
-
-
+            // 
+            // lblCurrentTempLabel
+            // 
             this.lblCurrentTempLabel.AutoSize = true;
             this.lblCurrentTempLabel.ForeColor = System.Drawing.Color.Gainsboro;
             this.lblCurrentTempLabel.Location = new System.Drawing.Point(16, 50);
@@ -414,8 +429,9 @@
             this.lblCurrentTempLabel.Size = new System.Drawing.Size(89, 19);
             this.lblCurrentTempLabel.TabIndex = 1;
             this.lblCurrentTempLabel.Text = "Temperature:";
-
-
+            // 
+            // lblCurrentTempValue
+            // 
             this.lblCurrentTempValue.AutoSize = true;
             this.lblCurrentTempValue.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblCurrentTempValue.ForeColor = System.Drawing.Color.White;
@@ -424,8 +440,9 @@
             this.lblCurrentTempValue.Size = new System.Drawing.Size(21, 19);
             this.lblCurrentTempValue.TabIndex = 2;
             this.lblCurrentTempValue.Text = "--";
-
-
+            // 
+            // lblCurrentHumidityLabel
+            // 
             this.lblCurrentHumidityLabel.AutoSize = true;
             this.lblCurrentHumidityLabel.ForeColor = System.Drawing.Color.Gainsboro;
             this.lblCurrentHumidityLabel.Location = new System.Drawing.Point(16, 80);
@@ -433,8 +450,9 @@
             this.lblCurrentHumidityLabel.Size = new System.Drawing.Size(68, 19);
             this.lblCurrentHumidityLabel.TabIndex = 3;
             this.lblCurrentHumidityLabel.Text = "Humidity:";
-
-
+            // 
+            // lblCurrentHumidityValue
+            // 
             this.lblCurrentHumidityValue.AutoSize = true;
             this.lblCurrentHumidityValue.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblCurrentHumidityValue.ForeColor = System.Drawing.Color.White;
@@ -443,8 +461,9 @@
             this.lblCurrentHumidityValue.Size = new System.Drawing.Size(21, 19);
             this.lblCurrentHumidityValue.TabIndex = 4;
             this.lblCurrentHumidityValue.Text = "--";
-
-
+            // 
+            // lblCurrentPressureLabel
+            // 
             this.lblCurrentPressureLabel.AutoSize = true;
             this.lblCurrentPressureLabel.ForeColor = System.Drawing.Color.Gainsboro;
             this.lblCurrentPressureLabel.Location = new System.Drawing.Point(16, 110);
@@ -452,8 +471,9 @@
             this.lblCurrentPressureLabel.Size = new System.Drawing.Size(64, 19);
             this.lblCurrentPressureLabel.TabIndex = 5;
             this.lblCurrentPressureLabel.Text = "Pressure:";
-
-
+            // 
+            // lblCurrentPressureValue
+            // 
             this.lblCurrentPressureValue.AutoSize = true;
             this.lblCurrentPressureValue.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblCurrentPressureValue.ForeColor = System.Drawing.Color.White;
@@ -462,8 +482,9 @@
             this.lblCurrentPressureValue.Size = new System.Drawing.Size(21, 19);
             this.lblCurrentPressureValue.TabIndex = 6;
             this.lblCurrentPressureValue.Text = "--";
-
-
+            // 
+            // lblCurrentWindLabel
+            // 
             this.lblCurrentWindLabel.AutoSize = true;
             this.lblCurrentWindLabel.ForeColor = System.Drawing.Color.Gainsboro;
             this.lblCurrentWindLabel.Location = new System.Drawing.Point(16, 140);
@@ -471,8 +492,9 @@
             this.lblCurrentWindLabel.Size = new System.Drawing.Size(44, 19);
             this.lblCurrentWindLabel.TabIndex = 7;
             this.lblCurrentWindLabel.Text = "Wind:";
-
-
+            // 
+            // lblCurrentWindValue
+            // 
             this.lblCurrentWindValue.AutoSize = true;
             this.lblCurrentWindValue.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblCurrentWindValue.ForeColor = System.Drawing.Color.White;
@@ -481,9 +503,9 @@
             this.lblCurrentWindValue.Size = new System.Drawing.Size(21, 19);
             this.lblCurrentWindValue.TabIndex = 8;
             this.lblCurrentWindValue.Text = "--";
-
-
-
+            // 
+            // pnlSimulation
+            // 
             this.pnlSimulation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(60)))), ((int)(((byte)(120)))));
             this.pnlSimulation.Controls.Add(this.lblSimTitle);
             this.pnlSimulation.Controls.Add(this.btnSimHumidity);
@@ -493,8 +515,9 @@
             this.pnlSimulation.Name = "pnlSimulation";
             this.pnlSimulation.Size = new System.Drawing.Size(483, 180);
             this.pnlSimulation.TabIndex = 5;
-
-
+            // 
+            // lblSimTitle
+            // 
             this.lblSimTitle.AutoSize = true;
             this.lblSimTitle.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblSimTitle.ForeColor = System.Drawing.Color.White;
@@ -502,9 +525,10 @@
             this.lblSimTitle.Name = "lblSimTitle";
             this.lblSimTitle.Size = new System.Drawing.Size(127, 20);
             this.lblSimTitle.TabIndex = 0;
-            this.lblSimTitle.Text = "What‑If Controls";
-
-
+            this.lblSimTitle.Text = "Change variables";
+            // 
+            // btnSimHumidity
+            // 
             this.btnSimHumidity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(170)))), ((int)(((byte)(220)))));
             this.btnSimHumidity.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSimHumidity.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
@@ -515,8 +539,9 @@
             this.btnSimHumidity.TabIndex = 1;
             this.btnSimHumidity.Text = "+10% Humidity";
             this.btnSimHumidity.UseVisualStyleBackColor = false;
-
-
+            // 
+            // btnSimPressure
+            // 
             this.btnSimPressure.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(140)))), ((int)(((byte)(70)))));
             this.btnSimPressure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSimPressure.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
@@ -527,18 +552,20 @@
             this.btnSimPressure.TabIndex = 2;
             this.btnSimPressure.Text = "-3 hPa Pressure";
             this.btnSimPressure.UseVisualStyleBackColor = false;
-
-
+            // 
+            // lblSimHint
+            // 
             this.lblSimHint.AutoSize = true;
             this.lblSimHint.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblSimHint.ForeColor = System.Drawing.Color.Gainsboro;
             this.lblSimHint.Location = new System.Drawing.Point(20, 100);
             this.lblSimHint.Name = "lblSimHint";
-            this.lblSimHint.Size = new System.Drawing.Size(410, 15);
+            this.lblSimHint.Size = new System.Drawing.Size(330, 15);
             this.lblSimHint.TabIndex = 3;
-            this.lblSimHint.Text = "Change humidity or pressure to see how probabilities and descriptions react.";
-
-
+            this.lblSimHint.Text = "Change humidity or pressure to see how probabilities change";
+            // 
+            // btnRunForecast
+            // 
             this.btnRunForecast.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(180)))), ((int)(((byte)(120)))));
             this.btnRunForecast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRunForecast.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
@@ -549,8 +576,9 @@
             this.btnRunForecast.TabIndex = 6;
             this.btnRunForecast.Text = "Run Forecast";
             this.btnRunForecast.UseVisualStyleBackColor = false;
-
-
+            // 
+            // btnFinalPrediction
+            // 
             this.btnFinalPrediction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
             this.btnFinalPrediction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFinalPrediction.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
@@ -559,30 +587,34 @@
             this.btnFinalPrediction.Name = "btnFinalPrediction";
             this.btnFinalPrediction.Size = new System.Drawing.Size(200, 42);
             this.btnFinalPrediction.TabIndex = 7;
-            this.btnFinalPrediction.Text = "Final Prediction";
+            this.btnFinalPrediction.Text = "Predict";
             this.btnFinalPrediction.UseVisualStyleBackColor = false;
-
-
+            // 
+            // lblFinalPredictionLabel
+            // 
             this.lblFinalPredictionLabel.AutoSize = true;
             this.lblFinalPredictionLabel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblFinalPredictionLabel.ForeColor = System.Drawing.Color.White;
-            this.lblFinalPredictionLabel.Location = new System.Drawing.Point(470, 560);
+            this.lblFinalPredictionLabel.Location = new System.Drawing.Point(477, 560);
             this.lblFinalPredictionLabel.Name = "lblFinalPredictionLabel";
-            this.lblFinalPredictionLabel.Size = new System.Drawing.Size(121, 20);
+            this.lblFinalPredictionLabel.Size = new System.Drawing.Size(154, 20);
             this.lblFinalPredictionLabel.TabIndex = 8;
-            this.lblFinalPredictionLabel.Text = "Final prediction:";
-
-
+            this.lblFinalPredictionLabel.Text = "Quantum Prediction:";
+            this.lblFinalPredictionLabel.Click += new System.EventHandler(this.lblFinalPredictionLabel_Click);
+            // 
+            // lblFinalPredictionValue
+            // 
             this.lblFinalPredictionValue.AutoSize = true;
             this.lblFinalPredictionValue.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblFinalPredictionValue.ForeColor = System.Drawing.Color.LightGreen;
-            this.lblFinalPredictionValue.Location = new System.Drawing.Point(610, 560);
+            this.lblFinalPredictionValue.Location = new System.Drawing.Point(637, 560);
             this.lblFinalPredictionValue.Name = "lblFinalPredictionValue";
             this.lblFinalPredictionValue.Size = new System.Drawing.Size(21, 20);
             this.lblFinalPredictionValue.TabIndex = 9;
             this.lblFinalPredictionValue.Text = "--";
-
-
+            // 
+            // WeatherForm
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(22)))), ((int)(((byte)(40)))));

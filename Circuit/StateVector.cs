@@ -17,7 +17,7 @@ namespace Sim1Test.Circuit
         public StateVector(int numberOQB)
         {
             NumberOfQubits = numberOQB;
-            Amplitudes = new ComplexNumber[(int)Math.Pow(2, numberOQB)];
+            Amplitudes = new ComplexNumber[1<< numberOQB];
             Amplitudes[0] = new ComplexNumber(1, 0);
             for (int i = 1; i < Amplitudes.Length; i++)
             {

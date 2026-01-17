@@ -98,8 +98,10 @@ namespace Sim1Test.Components
         public void SetProbabilities(double[] probabilities)
         {
             if (probabilities == null) return;
-            if (probabilities.Length != rows.Count)
-                throw new ArgumentException("Length of probabilities must match number of states");
+            if (probabilities.Length != rows.Count) { 
+                MessageBox.Show(probabilities.Length.ToString());
+                return;
+            }
 
             for (int i = 0; i < rows.Count; i++)
             {

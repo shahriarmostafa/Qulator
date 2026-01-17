@@ -119,32 +119,7 @@ namespace Sim1Test.Components
         }
 
 
-        //private void SetProbabilitiesFromAmplitudes(ComplexNumber[] amps)
-        //{
-        //    double p00 = amps[0].SquireValue();
-        //    double p01 = amps[1].SquireValue();
-        //    double p10 = amps[2].SquireValue();
-        //    double p11 = amps[3].SquireValue();
-        //    SetProbabilities(p00, p01, p10, p11);
-        //}
 
-        //private void SetProbabilities(double p00, double p01, double p10, double p11)
-        //{
-        //    p00 = Clamp01(p00);
-        //    p01 = Clamp01(p01);
-        //    p10 = Clamp01(p10);
-        //    p11 = Clamp01(p11);
-
-        //    lblProb00Value.Text = $"{p00 * 100:F1}%";
-        //    lblProb01Value.Text = $"{p01 * 100:F1}%";
-        //    lblProb10Value.Text = $"{p10 * 100:F1}%";
-        //    lblProb11Value.Text = $"{p11 * 100:F1}%";
-
-        //    progProb00.Value = (int)(p00 * 100);
-        //    progProb01.Value = (int)(p01 * 100);
-        //    progProb10.Value = (int)(p10 * 100);
-        //    progProb11.Value = (int)(p11 * 100);
-        //}
 
         private static double Clamp01(double v)
         {

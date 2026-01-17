@@ -28,19 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.superdenseCodingComponent1 = new Sim1Test.Components.SuperdenseCodingComponent();
+            this.singleQubitComponent1 = new Sim1Test.Components.SingleQubitComponent();
             this.SuspendLayout();
             // 
-            // superdenseCodingComponent1
+            // singleQubitComponent1
             // 
-            this.superdenseCodingComponent1.BackColor = System.Drawing.Color.White;
-            this.superdenseCodingComponent1.Location = new System.Drawing.Point(84, 53);
-            this.superdenseCodingComponent1.Name = "superdenseCodingComponent1";
-            this.superdenseCodingComponent1.OutputQ0 = "?";
-            this.superdenseCodingComponent1.OutputQ1 = "?";
-            this.superdenseCodingComponent1.ShowOutputs = false;
-            this.superdenseCodingComponent1.Size = new System.Drawing.Size(752, 484);
-            this.superdenseCodingComponent1.TabIndex = 0;
+            this.singleQubitComponent1.BackColor = System.Drawing.Color.White;
+            this.singleQubitComponent1.Location = new System.Drawing.Point(75, -3);
+            this.singleQubitComponent1.Name = "singleQubitComponent1";
+            this.singleQubitComponent1.Size = new System.Drawing.Size(740, 485);
+            this.singleQubitComponent1.TabIndex = 0;
             // 
             // SimulationPage
             // 
@@ -48,7 +45,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(974, 586);
-            this.Controls.Add(this.superdenseCodingComponent1);
+            this.Controls.Add(this.singleQubitComponent1);
             this.Name = "SimulationPage";
             this.Text = "SimulationPage";
             this.Load += new System.EventHandler(this.SimulationPage_Load);
@@ -58,6 +55,6 @@
 
         #endregion
 
-        private Components.SuperdenseCodingComponent superdenseCodingComponent1;
+        private Components.SingleQubitComponent singleQubitComponent1;
     }
 }

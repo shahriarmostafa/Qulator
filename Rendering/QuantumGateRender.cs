@@ -77,6 +77,8 @@ namespace Sim1Test.Rendering
             }
         }
 
+
+
         public static void DrawCNOTGate(Graphics g, int x, int controlY, int targetY,
                                         Color controlColor, Color targetColor)
         {

@@ -29,3 +29,4 @@ C:\Project\Qulator\obj\Debug\Sim1Test.csproj.CoreCompileInputs.cache
 C:\Project\Qulator\obj\Debug\Sim1Test.exe
 C:\Project\Qulator\obj\Debug\Sim1Test.pdb
 >>>>>>> aad55bbe9315ddbc48346e1f1d62cf7bd5d352e6
+C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.Components.SingleQubitComponent.resources

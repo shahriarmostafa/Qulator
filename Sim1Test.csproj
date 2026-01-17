@@ -67,6 +67,12 @@
     <Compile Include="Components\ProbabilityBarsControl.Designer.cs">
       <DependentUpon>ProbabilityBarsControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\SingleQubitComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\SingleQubitComponent.Designer.cs">
+      <DependentUpon>SingleQubitComponent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\SuperdenseCodingComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\ProbabilityBarsControl.resx">
       <DependentUpon>ProbabilityBarsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\SingleQubitComponent.resx">
+      <DependentUpon>SingleQubitComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\SuperdenseCodingComponent.resx">
       <DependentUpon>SuperdenseCodingComponent.cs</DependentUpon>
