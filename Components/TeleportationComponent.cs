@@ -12,9 +12,9 @@ namespace Sim1Test.Components
     public partial class TeleportationComponent : UserControl
     {
         public bool ShowOutputs { get; set; } = false;
-        public string OutputQ0 { get; set; } = "?"; // measurement m0
-        public string OutputQ1 { get; set; } = "?"; // measurement m1
-        public string OutputQ2 { get; set; } = "?"; // teleported qubit
+        public string OutputQ0 { get; set; } = "?";
+        public string OutputQ1 { get; set; } = "?";
+        public string OutputQ2 { get; set; } = "?";
 
         private readonly Color hadamardColor = Color.FromArgb(100, 180, 255);
         private readonly Color cnotControlColor = Color.FromArgb(80, 80, 80);
@@ -214,6 +214,11 @@ namespace Sim1Test.Components
         }
 
         private void TeleportationComponent_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void probBars_Load(object sender, EventArgs e)
         {
 
         }

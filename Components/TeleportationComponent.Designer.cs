@@ -119,7 +119,7 @@
             this.btnRunTeleport.Name = "btnRunTeleport";
             this.btnRunTeleport.Size = new System.Drawing.Size(111, 24);
             this.btnRunTeleport.TabIndex = 5;
-            this.btnRunTeleport.Text = "Run Teleportation";
+            this.btnRunTeleport.Text = "Teleport";
             this.btnRunTeleport.UseVisualStyleBackColor = false;
             this.btnRunTeleport.Click += new System.EventHandler(this.btnRunTeleport_Click);
             // 
@@ -140,7 +140,7 @@
             this.pnlCircuit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCircuit.Location = new System.Drawing.Point(17, 74);
             this.pnlCircuit.Name = "pnlCircuit";
-            this.pnlCircuit.Size = new System.Drawing.Size(669, 240);
+            this.pnlCircuit.Size = new System.Drawing.Size(669, 218);
             this.pnlCircuit.TabIndex = 7;
             this.pnlCircuit.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCircuit_Paint);
             // 
@@ -148,10 +148,11 @@
             // 
             this.probBars.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
             this.probBars.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.probBars.Location = new System.Drawing.Point(17, 330);
+            this.probBars.Location = new System.Drawing.Point(18, 298);
             this.probBars.Name = "probBars";
             this.probBars.Size = new System.Drawing.Size(669, 211);
             this.probBars.TabIndex = 8;
+            this.probBars.Load += new System.EventHandler(this.probBars_Load);
             // 
             // TeleportationComponent
             // 
@@ -168,7 +169,7 @@
             this.Controls.Add(this.btnUnknown0);
             this.Controls.Add(this.lblTitle);
             this.Name = "TeleportationComponent";
-            this.Size = new System.Drawing.Size(708, 587);
+            this.Size = new System.Drawing.Size(708, 529);
             this.Load += new System.EventHandler(this.TeleportationComponent_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

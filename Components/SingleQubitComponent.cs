@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using Sim1Test.Components;
 using Sim1Test.Circuit;
 using Sim1Test.Maths;
 using Sim1Test.Rendering;
@@ -15,7 +14,6 @@ namespace Sim1Test.Components
         private List<string> gateHistory = new List<string>();
         private Random rand = new Random();
 
-        // Gate colors matching superdense coding
         private readonly Color xGateColor = Color.FromArgb(230, 90, 90);
         private readonly Color yGateColor = Color.FromArgb(90, 200, 230);
         private readonly Color zGateColor = Color.FromArgb(160, 90, 230);
@@ -29,12 +27,10 @@ namespace Sim1Test.Components
         {
             InitializeComponent();
 
-            // Initialize qubit to |0⟩ state
             qubit = new StateVector(1);
 
             this.DoubleBuffered = true;
 
-            // Auto-find probability bars control
             foreach (Control c in Controls)
             {
                 if (c is ProbabilityBarsControl bars)
@@ -51,7 +47,6 @@ namespace Sim1Test.Components
             }
         }
 
-        // Button event handlers (all designer-editable)
         private void btnX_Click(object sender, EventArgs e) => ApplyGate("X", GateLibrary.X());
         private void btnY_Click(object sender, EventArgs e) => ApplyGate("Y", GateLibrary.Y());
         private void btnZ_Click(object sender, EventArgs e) => ApplyGate("Z", GateLibrary.Z());
@@ -59,12 +54,9 @@ namespace Sim1Test.Components
         private void btnMeasure_Click(object sender, EventArgs e) => MeasureQubit();
         private void btnReset_Click(object sender, EventArgs e) => ResetCircuit();
 
-        /// <summary>
-        /// Apply quantum gate to the qubit
-        /// </summary>
+
         private void ApplyGate(string gateSymbol, Matrix gateMatrix)
         {
-            // Max 4 gates limit
             if (gateHistory.Count >= 4)
             {
                 MessageBox.Show("Maximum 4 gates allowed!", "Circuit Limit",
@@ -72,10 +64,8 @@ namespace Sim1Test.Components
                 return;
             }
 
-            // Add to history for visualization
             gateHistory.Add(gateSymbol);
 
-            // Apply to quantum state
             try
             {
                 qubit.ApplySingleQubitGate(gateMatrix, 0);
@@ -91,9 +81,7 @@ namespace Sim1Test.Components
             pnlCircuit.Invalidate();
         }
 
-        /// <summary>
-        /// Update probability bars from quantum state
-        /// </summary>
+
         private void UpdateProbabilities()
         {
             if (probabilityBarsControl1 == null || qubit == null || qubit.Amplitudes == null)
@@ -101,30 +89,25 @@ namespace Sim1Test.Components
 
             double[] probs = new double[2];
 
-            // Calculate probabilities from amplitude magnitudes squared
-            probs[0] = qubit.Amplitudes[0].SquireValue();      // |0⟩ probability
-            probs[1] = qubit.Amplitudes[1].SquireValue();      // |1⟩ probability
 
-            // Clamp to valid range
+            probs[0] = qubit.Amplitudes[0].SquireValue();
+            probs[1] = qubit.Amplitudes[1].SquireValue();
+
             probs[0] = Math.Max(0, Math.Min(1, probs[0]));
             probs[1] = Math.Max(0, Math.Min(1, probs[1]));
 
             probabilityBarsControl1.SetProbabilities(probs);
         }
 
-        /// <summary>
-        /// Measure qubit and collapse to |0⟩ or |1⟩
-        /// </summary>
+
         private void MeasureQubit()
         {
             if (qubit == null || qubit.Amplitudes == null || qubit.Amplitudes.Length < 2)
                 return;
 
-            // Get probability of measuring |0⟩
             double p0 = qubit.Amplitudes[0].SquireValue();
             p0 = Math.Max(0, Math.Min(1, p0));
 
-            // Randomly collapse based on probabilities
             bool measuredZero = rand.NextDouble() < p0;
             string measureResult;
 
@@ -141,7 +124,7 @@ namespace Sim1Test.Components
                 measureResult = "1";
             }
 
-            // Store result to display in circuit
+
             lastMeasurementResult = measureResult;
             showMeasurementBox = true;
 
@@ -149,9 +132,8 @@ namespace Sim1Test.Components
             pnlCircuit.Invalidate();
         }
 
-        /// <summary>
-        /// Reset circuit to initial |0⟩ state
-        /// </summary>
+
+
         private void ResetCircuit()
         {
             qubit = new StateVector(1);
@@ -163,9 +145,8 @@ namespace Sim1Test.Components
         }
 
 
-        /// <summary>
-        /// Draw quantum circuit on panel
-        /// </summary>
+
+
         private void pnlCircuit_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -226,9 +207,8 @@ namespace Sim1Test.Components
             }
         }
 
-        /// <summary>
-        /// Set probability bars control reference (called from designer or parent)
-        /// </summary>
+
+
         public void SetProbabilityBarsControl(ProbabilityBarsControl bars)
         {
             probabilityBarsControl1 = bars;
