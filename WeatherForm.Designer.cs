@@ -18,6 +18,7 @@
         private void InitializeComponent()
         {
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlInputs = new System.Windows.Forms.Panel();
             this.lblInputsTitle = new System.Windows.Forms.Label();
@@ -77,12 +78,26 @@
             // pnlHeader
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(130)))), ((int)(((byte)(220)))));
+            this.pnlHeader.Controls.Add(this.button1);
             this.pnlHeader.Controls.Add(this.lblTitle);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(966, 72);
+            this.pnlHeader.Size = new System.Drawing.Size(915, 72);
             this.pnlHeader.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(772, 18);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(119, 38);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Back";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // lblTitle
             // 
@@ -539,6 +554,7 @@
             this.btnSimHumidity.TabIndex = 1;
             this.btnSimHumidity.Text = "+10% Humidity";
             this.btnSimHumidity.UseVisualStyleBackColor = false;
+            this.btnSimHumidity.Click += new System.EventHandler(this.btnSimHumidity_Click_1);
             // 
             // btnSimPressure
             // 
@@ -552,6 +568,7 @@
             this.btnSimPressure.TabIndex = 2;
             this.btnSimPressure.Text = "-3 hPa Pressure";
             this.btnSimPressure.UseVisualStyleBackColor = false;
+            this.btnSimPressure.Click += new System.EventHandler(this.btnSimPressure_Click_1);
             // 
             // lblSimHint
             // 
@@ -570,12 +587,13 @@
             this.btnRunForecast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRunForecast.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnRunForecast.ForeColor = System.Drawing.Color.White;
-            this.btnRunForecast.Location = new System.Drawing.Point(20, 550);
+            this.btnRunForecast.Location = new System.Drawing.Point(20, 538);
             this.btnRunForecast.Name = "btnRunForecast";
             this.btnRunForecast.Size = new System.Drawing.Size(200, 42);
             this.btnRunForecast.TabIndex = 6;
             this.btnRunForecast.Text = "Run Forecast";
             this.btnRunForecast.UseVisualStyleBackColor = false;
+            this.btnRunForecast.Click += new System.EventHandler(this.btnRunForecast_Click_1);
             // 
             // btnFinalPrediction
             // 
@@ -583,31 +601,31 @@
             this.btnFinalPrediction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFinalPrediction.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnFinalPrediction.ForeColor = System.Drawing.Color.White;
-            this.btnFinalPrediction.Location = new System.Drawing.Point(240, 550);
+            this.btnFinalPrediction.Location = new System.Drawing.Point(238, 538);
             this.btnFinalPrediction.Name = "btnFinalPrediction";
             this.btnFinalPrediction.Size = new System.Drawing.Size(200, 42);
             this.btnFinalPrediction.TabIndex = 7;
             this.btnFinalPrediction.Text = "Predict";
             this.btnFinalPrediction.UseVisualStyleBackColor = false;
+            this.btnFinalPrediction.Click += new System.EventHandler(this.btnFinalPrediction_Click_1);
             // 
             // lblFinalPredictionLabel
             // 
             this.lblFinalPredictionLabel.AutoSize = true;
             this.lblFinalPredictionLabel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblFinalPredictionLabel.ForeColor = System.Drawing.Color.White;
-            this.lblFinalPredictionLabel.Location = new System.Drawing.Point(477, 560);
+            this.lblFinalPredictionLabel.Location = new System.Drawing.Point(454, 549);
             this.lblFinalPredictionLabel.Name = "lblFinalPredictionLabel";
             this.lblFinalPredictionLabel.Size = new System.Drawing.Size(154, 20);
             this.lblFinalPredictionLabel.TabIndex = 8;
             this.lblFinalPredictionLabel.Text = "Quantum Prediction:";
-            this.lblFinalPredictionLabel.Click += new System.EventHandler(this.lblFinalPredictionLabel_Click);
             // 
             // lblFinalPredictionValue
             // 
             this.lblFinalPredictionValue.AutoSize = true;
             this.lblFinalPredictionValue.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblFinalPredictionValue.ForeColor = System.Drawing.Color.LightGreen;
-            this.lblFinalPredictionValue.Location = new System.Drawing.Point(637, 560);
+            this.lblFinalPredictionValue.Location = new System.Drawing.Point(614, 549);
             this.lblFinalPredictionValue.Name = "lblFinalPredictionValue";
             this.lblFinalPredictionValue.Size = new System.Drawing.Size(21, 20);
             this.lblFinalPredictionValue.TabIndex = 9;
@@ -618,7 +636,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(22)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(966, 660);
+            this.ClientSize = new System.Drawing.Size(915, 607);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.pnlInputs);
             this.Controls.Add(this.pnlProbabilities);
@@ -708,5 +726,6 @@
         private System.Windows.Forms.Label lblVarTitle;
         private System.Windows.Forms.Label lblCurrentTitle;
         private System.Windows.Forms.Label lblSimTitle;
+        private System.Windows.Forms.Button button1;
     }
 }

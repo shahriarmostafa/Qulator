@@ -1,46 +1,35 @@
 ﻿using Sim1Test.Circuit;
+using Sim1Test.Maths;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sim1Test.Algorithms.GroverSearch
+public static class GroverDiffuser4Q
 {
-    public static class GroverDiffuser4Q
+    public static void ApplyDiffuser(StateVector state)
     {
-        public static void ApplyDiffuser(StateVector state)
+        if (state.NumberOfQubits != 4)
+            throw new InvalidOperationException("GroverDiffuser4Q supports exactly 4 qubits.");
+
+        for (int q = 0; q < 4; q++)
         {
-            int nQubits = state.NumberOfQubits;
-            if (nQubits != 4)
-            {
-                throw new InvalidOperationException("GroverDiffuser4Q supports exactly 4 qubits.");
-            }
+            state.ApplySingleQubitGate(GateLibrary.H(), q);
+        }
 
-            for (int q = 0; q < nQubits; q++)
-            {
-                state.ApplySingleQubitGate(GateLibrary.H(), q);
-            }
+        for (int q = 0; q < 4; q++)
+        {
+            state.ApplySingleQubitGate(GateLibrary.X(), q);
+        }
 
-            for (int q = 0; q < nQubits; q++)
-            {
-                state.ApplySingleQubitGate(GateLibrary.X(), q);
-            }
+        int allOnesIndex = 15;
+        state.Amplitudes[allOnesIndex] = state.Amplitudes[allOnesIndex].Multiply(new ComplexNumber(-1, 0));
 
+        for (int q = 0; q < 4; q++)
+        {
+            state.ApplySingleQubitGate(GateLibrary.X(), q);
+        }
 
-            state.ApplySingleQubitGate4Controls(GateLibrary.Z(), 0, 1, 2, 3, 3);
-
-
-            for (int q = 0; q < nQubits; q++)
-            {
-                state.ApplySingleQubitGate(GateLibrary.X(), q);
-            }
-
-
-            for (int q = 0; q < nQubits; q++)
-            {
-                state.ApplySingleQubitGate(GateLibrary.H(), q);
-            }
+        for (int q = 0; q < 4; q++)
+        {
+            state.ApplySingleQubitGate(GateLibrary.H(), q);
         }
     }
 }

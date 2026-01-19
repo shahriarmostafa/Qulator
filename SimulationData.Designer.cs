@@ -1,6 +1,6 @@
 ﻿namespace Sim1Test
 {
-    partial class Admin
+    partial class SimulationData
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // Admin
+            // SimulationData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(815, 497);
-            this.Name = "Admin";
-            this.Text = "Admin";
+            this.ClientSize = new System.Drawing.Size(951, 550);
+            this.Name = "SimulationData";
+            this.Text = "SimulationData";
             this.ResumeLayout(false);
 
         }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace Sim1Test.WeatherForcastingBackend
 {
@@ -17,12 +13,9 @@ namespace Sim1Test.WeatherForcastingBackend
             if (humidity > 70 && pressure < 1005)
             {
                 int baseProb = 70;
-
                 baseProb += (int)((humidity - 70) * 0.8);
-
                 if (wind > 5) baseProb += 5;
                 if (wind > 10) baseProb += 5;
-
                 int probability = Clamp(baseProb, 60, 100);
                 return new WeatherResult("Rain", probability);
             }
@@ -31,9 +24,7 @@ namespace Sim1Test.WeatherForcastingBackend
                 pressure >= 1005 && pressure <= 1015)
             {
                 int baseProb = 60;
-
                 baseProb += (int)Math.Min(wind, 10);
-
                 int probability = Clamp(baseProb, 40, 90);
                 return new WeatherResult("Cloudy", probability);
             }
@@ -41,21 +32,17 @@ namespace Sim1Test.WeatherForcastingBackend
             if (humidity < 40 && pressure > 1015)
             {
                 int baseProb = 70;
-
                 baseProb += (int)((40 - humidity) * 0.5);
-
                 if (wind > 3 && wind <= 8)
                 {
                     baseProb += 5;
                 }
-
                 int probability = Clamp(baseProb, 50, 100);
                 return new WeatherResult("Clear", probability);
             }
 
             int fallbackProb = 40;
             string condition;
-
             if (humidity > 60)
             {
                 condition = "Likely Rain / Showers";

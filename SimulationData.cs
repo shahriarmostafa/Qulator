@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Sim1Test
 {
-    public partial class Admin : Form
+    public partial class SimulationData : Form
     {
-        public Admin()
+        public SimulationData()
         {
             InitializeComponent();
         }

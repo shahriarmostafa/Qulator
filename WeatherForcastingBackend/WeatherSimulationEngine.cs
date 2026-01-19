@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace Sim1Test.WeatherForcastingBackend
 {
     public class WeatherSimulationEngine
     {
         private readonly WeatherForecaster _forecaster = new WeatherForecaster();
-
 
         public WeatherSimulationResult RunHumidityIncreaseSimulation(WeatherInput baseInput, double increasePercent = 10.0)
         {

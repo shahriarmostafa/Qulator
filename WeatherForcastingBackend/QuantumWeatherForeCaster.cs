@@ -1,9 +1,5 @@
-﻿using Sim1Test.Algorithms.GroverSearch;
+using Sim1Test.Algorithms.GroverSearch;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sim1Test.WeatherForcastingBackend
 {
@@ -14,15 +10,10 @@ namespace Sim1Test.WeatherForcastingBackend
         public WeatherResult ForecastWithGroverDemo(WeatherInput input)
         {
             WeatherResult classical = classicalForecaster.Forecast(input);
-
             int markedIndex = MapInputToScenarioIndex(input, classical);
-
             int[] measuredBits = GroverSearch4Q.RunGrover4Qubits(markedIndex);
             int measuredIndex = BitsToIndex(measuredBits);
-
             WeatherResult quantumResult = ScenarioIndexToForecast(measuredIndex, input);
-
-
             return quantumResult;
         }
 
@@ -38,7 +29,6 @@ namespace Sim1Test.WeatherForcastingBackend
 
             return (q3 << 3) | (q2 << 2) | (q1 << 1) | q0;
         }
-
 
         private int MapInputToScenarioIndex(WeatherInput input, WeatherResult classical)
         {

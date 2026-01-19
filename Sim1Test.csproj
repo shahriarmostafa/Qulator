@@ -47,12 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Admin.Designer.cs">
-      <DependentUpon>Admin.cs</DependentUpon>
-    </Compile>
     <Compile Include="Admin\Applications.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +78,12 @@
     </Compile>
     <Compile Include="Components\BellStateComponent.Designer.cs">
       <DependentUpon>BellStateComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\GroverSearchComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\GroverSearchComponent.Designer.cs">
+      <DependentUpon>GroverSearchComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\ProbabilityBarsControl.cs">
       <SubType>UserControl</SubType>
@@ -134,6 +134,12 @@
       <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
     <Compile Include="Rendering\QuantumGateRender.cs" />
+    <Compile Include="SimulationData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SimulationData.Designer.cs">
+      <DependentUpon>SimulationData.cs</DependentUpon>
+    </Compile>
     <Compile Include="SimulationPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,7 +147,12 @@
       <DependentUpon>SimulationPage.cs</DependentUpon>
     </Compile>
     <Compile Include="weatherforcasting.cs" />
-    <Compile Include="WeatherForcastingBackend\QuantumWeatherForeCaster.cs" />
+    <Compile Include="WeatherForcastingBackend\CompleteForecastAnalysis.cs" />
+    <Compile Include="WeatherForcastingBackend\CurrentConditionAnalysis.cs" />
+    <Compile Include="WeatherForcastingBackend\DetailedPrediction.cs" />
+    <Compile Include="WeatherForcastingBackend\HighLevelProbabilities.cs" />
+    <Compile Include="WeatherForcastingBackend\QuantumWeatherForecaster.cs" />
+    <Compile Include="WeatherForcastingBackend\VariationProbabilities.cs" />
     <Compile Include="WeatherForcastingBackend\WeatherAnalysisHelpers.cs" />
     <Compile Include="WeatherForcastingBackend\WeatherForecaster.cs" />
     <Compile Include="WeatherForcastingBackend\WeatherInput.cs" />
@@ -154,14 +165,14 @@
     <Compile Include="WeatherForm.Designer.cs">
       <DependentUpon>WeatherForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Admin.resx">
-      <DependentUpon>Admin.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Admin\UsersInfo.resx">
       <DependentUpon>UsersInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\BellStateComponent.resx">
       <DependentUpon>BellStateComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\GroverSearchComponent.resx">
+      <DependentUpon>GroverSearchComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\ProbabilityBarsControl.resx">
       <DependentUpon>ProbabilityBarsControl.cs</DependentUpon>
@@ -186,9 +197,13 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimulationData.resx">
+      <DependentUpon>SimulationData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SimulationPage.resx">
       <DependentUpon>SimulationPage.cs</DependentUpon>
@@ -210,6 +225,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\user-circles-set_78370-4704.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

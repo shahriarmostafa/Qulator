@@ -16,7 +16,7 @@ namespace Sim1Test
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Login());
             //Application.Run(new Registration());
-            Application.Run(new SimulationPage());
+            Application.Run(new SimulationPage("ss@gmail.com"));
 
         }
     }

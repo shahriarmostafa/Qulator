@@ -150,7 +150,7 @@
             this.probBars.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.probBars.Location = new System.Drawing.Point(18, 298);
             this.probBars.Name = "probBars";
-            this.probBars.Size = new System.Drawing.Size(669, 211);
+            this.probBars.Size = new System.Drawing.Size(669, 237);
             this.probBars.TabIndex = 8;
             this.probBars.Load += new System.EventHandler(this.probBars_Load);
             // 
@@ -169,7 +169,7 @@
             this.Controls.Add(this.btnUnknown0);
             this.Controls.Add(this.lblTitle);
             this.Name = "TeleportationComponent";
-            this.Size = new System.Drawing.Size(708, 529);
+            this.Size = new System.Drawing.Size(708, 560);
             this.Load += new System.EventHandler(this.TeleportationComponent_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

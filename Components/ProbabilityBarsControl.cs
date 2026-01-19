@@ -22,14 +22,10 @@ namespace Sim1Test.Components
             this.DoubleBuffered = true;
         }
 
-        /// <summary>
-        /// Configure the control for N basis states with given labels.
-        /// Example: SetStates(new[] {\"|00⟩\",\"|01⟩\",\"|10⟩\",\"|11⟩\"});
-        /// </summary>
+
         public void SetStates(string[] stateLabels)
         {
             SuspendLayout();
-            // Clear old rows
             foreach (var r in rows)
             {
                 Controls.Remove(r.LabelState);
@@ -41,21 +37,31 @@ namespace Sim1Test.Components
             }
             rows.Clear();
 
+            bool twoColumns = stateLabels.Length > 2;
+            int cols = twoColumns ? 2 : 1;
+            int rowsCount = (stateLabels.Length + cols - 1) / cols;
+
+            int colWidth = Width / cols;
             int xLabel = 10;
             int xValue = 80;
             int xBar = 150;
-            int y = 10;
             int rowHeight = 24;
+            int yStart = 10;
 
-            foreach (string label in stateLabels)
+            for (int i = 0; i < stateLabels.Length; i++)
             {
+                int col = i % cols;
+                int row = i / cols;
+                int xOffset = col * colWidth;
+                int y = yStart + row * rowHeight;
+
                 var lblState = new Label
                 {
                     AutoSize = true,
                     Font = new Font("Consolas", 9F, FontStyle.Bold),
                     ForeColor = Color.FromArgb(50, 50, 80),
-                    Location = new Point(xLabel, y),
-                    Text = $"P({label}):"
+                    Location = new Point(xLabel + xOffset, y),
+                    Text = $"P({stateLabels[i]}):"
                 };
 
                 var lblValue = new Label
@@ -63,14 +69,14 @@ namespace Sim1Test.Components
                     AutoSize = true,
                     Font = new Font("Consolas", 9F, FontStyle.Bold),
                     ForeColor = Color.FromArgb(50, 50, 80),
-                    Location = new Point(xValue, y),
+                    Location = new Point(xValue + xOffset, y),
                     Text = "---"
                 };
 
                 var bar = new ProgressBar
                 {
-                    Location = new Point(xBar, y + 1),
-                    Size = new Size(Math.Max(10, Width - xBar - 10), 18),
+                    Location = new Point(xBar + xOffset, y + 1),
+                    Size = new Size(Math.Max(10, colWidth - xBar - 10), 18),
                     Minimum = 0,
                     Maximum = 100
                 };
@@ -85,21 +91,18 @@ namespace Sim1Test.Components
                     LabelValue = lblValue,
                     Bar = bar
                 });
-
-                y += rowHeight;
             }
 
             ResumeLayout();
         }
 
-        /// <summary>
-        /// Update probabilities (0..1). Length must match number of states.
-        /// </summary>
+
         public void SetProbabilities(double[] probabilities)
         {
             if (probabilities == null) return;
-            if (probabilities.Length != rows.Count) { 
-                MessageBox.Show(probabilities.Length.ToString());
+            if (probabilities.Length != rows.Count)
+            {
+                MessageBox.Show("Length doesn't match" + rows.Count + "the prob length: " + probabilities.Length);
                 return;
             }
 
@@ -117,10 +120,16 @@ namespace Sim1Test.Components
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
+            bool twoColumns = rows.Count > 2;
+            int cols = twoColumns ? 2 : 1;
+            int colWidth = Width / cols;
             int xBar = 150;
-            foreach (var r in rows)
+
+            for (int i = 0; i < rows.Count; i++)
             {
-                r.Bar.Size = new Size(Math.Max(10, Width - xBar - 10), r.Bar.Height);
+                int col = i % cols;
+                int xOffset = col * colWidth;
+                rows[i].Bar.Size = new Size(Math.Max(10, colWidth - xBar - 10), rows[i].Bar.Height);
             }
         }
     }
