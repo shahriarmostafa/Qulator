@@ -47,11 +47,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AddContent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\AddContent.Designer.cs">
+      <DependentUpon>AddContent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Applications.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Admin\Applications.Designer.cs">
       <DependentUpon>Applications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Contents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Contents.Designer.cs">
+      <DependentUpon>Contents.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\UpdateContent.cs">
       <SubType>Form</SubType>
@@ -134,12 +146,6 @@
       <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
     <Compile Include="Rendering\QuantumGateRender.cs" />
-    <Compile Include="SimulationData.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SimulationData.Designer.cs">
-      <DependentUpon>SimulationData.cs</DependentUpon>
-    </Compile>
     <Compile Include="SimulationPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,18 @@
     <Compile Include="WeatherForm.Designer.cs">
       <DependentUpon>WeatherForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Admin\AddContent.resx">
+      <DependentUpon>AddContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Applications.resx">
+      <DependentUpon>Applications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Contents.resx">
+      <DependentUpon>Contents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\UpdateContent.resx">
+      <DependentUpon>UpdateContent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\UsersInfo.resx">
       <DependentUpon>UsersInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -201,9 +219,6 @@
     </Compile>
     <EmbeddedResource Include="Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SimulationData.resx">
-      <DependentUpon>SimulationData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SimulationPage.resx">
       <DependentUpon>SimulationPage.cs</DependentUpon>

@@ -102,7 +102,6 @@ namespace Sim1Test.Components
             if (probabilities == null) return;
             if (probabilities.Length != rows.Count)
             {
-                MessageBox.Show("Length doesn't match" + rows.Count + "the prob length: " + probabilities.Length);
                 return;
             }
 

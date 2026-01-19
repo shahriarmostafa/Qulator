@@ -1,6 +1,6 @@
 ﻿namespace Sim1Test.Admin
 {
-    partial class UpdateContent
+    partial class AddContent
     {
         /// <summary>
         /// Required designer variable.
@@ -39,7 +39,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.titleBox = new System.Windows.Forms.TextBox();
-            this.descriptionBox = new System.Windows.Forms.TextBox();
+            this.contentBox = new System.Windows.Forms.TextBox();
+            this.keyBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -99,11 +101,11 @@
             this.button3.BackColor = System.Drawing.Color.Lavender;
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(403, 462);
+            this.button3.Location = new System.Drawing.Point(387, 490);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(164, 40);
             this.button3.TabIndex = 3;
-            this.button3.Text = "Update";
+            this.button3.Text = "Add";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -132,18 +134,18 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(398, 78);
+            this.label4.Location = new System.Drawing.Point(410, 78);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(169, 30);
+            this.label4.Size = new System.Drawing.Size(139, 30);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Update Content";
+            this.label4.Text = "Add Content";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(429, 130);
+            this.label2.Location = new System.Drawing.Point(430, 194);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 17);
             this.label2.TabIndex = 10;
@@ -154,7 +156,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(429, 193);
+            this.label7.Location = new System.Drawing.Point(429, 237);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(107, 17);
             this.label7.TabIndex = 13;
@@ -162,27 +164,46 @@
             // 
             // titleBox
             // 
-            this.titleBox.Location = new System.Drawing.Point(272, 150);
+            this.titleBox.Location = new System.Drawing.Point(272, 214);
             this.titleBox.Name = "titleBox";
             this.titleBox.Size = new System.Drawing.Size(406, 20);
             this.titleBox.TabIndex = 14;
             // 
-            // descriptionBox
+            // contentBox
             // 
-            this.descriptionBox.Location = new System.Drawing.Point(272, 213);
-            this.descriptionBox.Multiline = true;
-            this.descriptionBox.Name = "descriptionBox";
-            this.descriptionBox.Size = new System.Drawing.Size(406, 223);
-            this.descriptionBox.TabIndex = 15;
-            this.descriptionBox.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.contentBox.Location = new System.Drawing.Point(272, 257);
+            this.contentBox.Multiline = true;
+            this.contentBox.Name = "contentBox";
+            this.contentBox.Size = new System.Drawing.Size(406, 223);
+            this.contentBox.TabIndex = 15;
             // 
-            // UpdateContent
+            // keyBox
+            // 
+            this.keyBox.Location = new System.Drawing.Point(272, 162);
+            this.keyBox.Name = "keyBox";
+            this.keyBox.Size = new System.Drawing.Size(406, 20);
+            this.keyBox.TabIndex = 16;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(430, 142);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 17);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Enter key name";
+            // 
+            // AddContent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.GhostWhite;
             this.ClientSize = new System.Drawing.Size(823, 553);
-            this.Controls.Add(this.descriptionBox);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.keyBox);
+            this.Controls.Add(this.contentBox);
             this.Controls.Add(this.titleBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label2);
@@ -192,7 +213,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.Name = "UpdateContent";
+            this.Name = "AddContent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";
             this.Load += new System.EventHandler(this.UpdateContent_Load);
@@ -217,6 +238,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox titleBox;
-        private System.Windows.Forms.TextBox descriptionBox;
+        private System.Windows.Forms.TextBox contentBox;
+        private System.Windows.Forms.TextBox keyBox;
+        private System.Windows.Forms.Label label1;
     }
 }

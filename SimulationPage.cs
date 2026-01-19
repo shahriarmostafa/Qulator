@@ -16,7 +16,6 @@ namespace Sim1Test
         private TeleportationComponent teleportationComponent;
         private GroverSearchComponent groverSearchComponent;
 
-        //user information
         private string FirstName;
         private string LastName;
         private string email;
@@ -53,10 +52,12 @@ namespace Sim1Test
             {
                 MessageBox.Show("Application failed.\r\n" + ex.Message);
             }
+            string[] content = GetContent("qubit");
+
             ShowComponent(
                 singleQubitComponent,
-                "Bell State",
-                "This simulation demonstrates quantum entanglement between two qubits using Bell states."
+                content[0],
+                content[1]
             );
             lblTitle.Text = "Hi, " + FirstName + " " + LastName;
         }
@@ -82,37 +83,72 @@ namespace Sim1Test
             if (component.Parent != null)
                 component.Parent.Controls.Remove(component);
 
-            Panel wrapper = new Panel();
-            wrapper.Dock = DockStyle.Top;
-            wrapper.AutoSize = true;
-            wrapper.Padding = new Padding(20);
+            // Wrapper
+            Panel wrapper = new Panel
+            {
+                Dock = DockStyle.Top,
+                AutoSize = true,
+                Padding = new Padding(20),
+                Margin = new Padding(0)
+            };
 
-            Label lblTitle = new Label();
-            lblTitle.Text = title;
-            lblTitle.Font = new Font("Segoe UI", 14, FontStyle.Bold);
-            lblTitle.AutoSize = true;
-            lblTitle.Dock = DockStyle.Top;
+            // Title
+            Label lblTitle = new Label
+            {
+                Text = title,
+                Font = new Font("Segoe UI", 14, FontStyle.Bold),
+                AutoSize = true,
+                Dock = DockStyle.Top,
+                Margin = new Padding(0, 0, 0, 4)
+            };
 
-            Label lblDesc = new Label();
-            lblDesc.Text = description;
-            lblDesc.Font = new Font("Segoe UI", 9);
-            lblDesc.MaximumSize = new Size(mainContentPanel.Width - 80, 0);
-            lblDesc.AutoSize = true;
-            lblDesc.Dock = DockStyle.Top;
-            lblDesc.Padding = new Padding(0, 5, 0, 15);
+            // Description
+            Label lblDesc = new Label
+            {
+                Text = description,
+                Font = new Font("Segoe UI", 9),
+                MaximumSize = new Size(mainContentPanel.Width - 80, 0),
+                AutoSize = true,
+                Dock = DockStyle.Top,
+                Margin = new Padding(0, 0, 0, 12)
+            };
 
+            // Component
             component.Dock = DockStyle.Top;
-            component.Height = component.PreferredSize.Height;
+            component.Margin = new Padding(0);
 
-
+            // IMPORTANT: Add in REVERSE order
+            wrapper.Controls.Add(component);
             wrapper.Controls.Add(lblDesc);
             wrapper.Controls.Add(lblTitle);
-            wrapper.Controls.Add(component);
-            
 
             mainContentPanel.Controls.Add(wrapper);
         }
 
+
+        private string[]  GetContent(string contentKey)
+        {
+            using (var con = Database.CreateConnection())
+            using (var cmd = con.CreateCommand())
+            {
+                cmd.CommandText = @"SELECT title, description FROM Contents WHERE content_key = @key";
+
+                cmd.Parameters.AddWithValue("@key", contentKey);
+
+                con.Open();
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return (new string[] {
+                            reader["title"].ToString(),
+                            reader["description"].ToString()
+                        });
+                    }
+                }
+                return null;
+            }
+        }
 
 
 
@@ -122,52 +158,71 @@ namespace Sim1Test
 
         private void singleQubitButton_Click(object sender, EventArgs e)
         {
+            string[] content = GetContent("qubit");
+
             ShowComponent(
                 singleQubitComponent,
-                "Bell State",
-                "This simulation demonstrates quantum entanglement between two qubits using Bell states."
+                content[0],
+                content[1]
             );
         }
 
         private void bellStateButton_Click(object sender, EventArgs e)
         {
+            string[] content = GetContent("bellstate");
 
             ShowComponent(
                 bellStateComponent,
-                "Bell State",
-                "This simulation demonstrates quantum entanglement between two qubits using Bell states."
+                content[0],
+                content[1]
             );
         }
 
         private void superdenseButton_Click(object sender, EventArgs e)
         {
+            string[] content = GetContent("superdensecoding");
+
             ShowComponent(
                 superdenseCodingComponent,
-                "Bell State",
-                "This simulation demonstrates quantum entanglement between two qubits using Bell states."
+                content[0],
+                content[1]
             );
         }
 
         private void teleportationButton_Click(object sender, EventArgs e)
         {
+            string[] content = GetContent("teleportation");
+
             ShowComponent(
                 teleportationComponent,
-                "Bell State",
-                "This simulation demonstrates quantum entanglement between two qubits using Bell states."
+                content[0],
+                content[1]
             );
         }
 
         private void groverSearchButton_Click(object sender, EventArgs e)
         {
+            if(UserType!= "pro-user")
+            {
+                MessageBox.Show("You are not a pro user to access. Apply for pro");
+                return;
+            }
+            string[] content = GetContent("groversearch");
+
             ShowComponent(
                 groverSearchComponent,
-                "Bell State",
-                "This simulation demonstrates quantum entanglement between two qubits using Bell states."
+                content[0],
+                content[1]
             );
         }
 
         private void forecastButton_Click(object sender, EventArgs e)
         {
+            if (UserType != "pro-user")
+            {
+                MessageBox.Show("You are not a pro user to access. Apply for pro");
+                return;
+            }
             WeatherForm weatherform = new WeatherForm();
             this.Hide();
             weatherform.ShowDialog();
@@ -213,6 +268,9 @@ namespace Sim1Test
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

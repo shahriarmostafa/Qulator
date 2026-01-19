@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Sim1Test.Admin
 {
-    public partial class UserInfo : Form
+    public partial class Contents : Form
     {
 
 
@@ -21,68 +21,51 @@ namespace Sim1Test.Admin
                 using (var da = new SqlDataAdapter(cmd))
                 {
                     cmd.CommandText = @"
-                        SELECT Email, FirstName, LastName, UserType, PhoneNumber, CreatedAt
-                        FROM Users
-                        ORDER BY CreatedAt DESC";
+                        SELECT content_key, title, description FROM Contents";
 
                     var dt = new DataTable();
                     con.Open();
                     da.Fill(dt);
 
-                    
+
 
                     dataGridView1.AutoGenerateColumns = false;
                     dataGridView1.Columns.Clear();
 
                     dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
                     {
-                        DataPropertyName = "Email",
-                        Name = "Email",
-                        HeaderText = "Email",
+                        DataPropertyName = "content_key",
+                        Name = "content_key",
+                        HeaderText = "Content Key",
                         ReadOnly = true
                     });
 
                     dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
                     {
-                        DataPropertyName = "FirstName",
-                        Name = "FirstName",
-                        HeaderText = "First Name",
+                        DataPropertyName = "title",
+                        Name = "title",
+                        HeaderText = "title",
                         ReadOnly = true
                     });
 
-                    dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+
+
+
+                    DataGridViewButtonColumn acceptColumn = new DataGridViewButtonColumn
                     {
-                        DataPropertyName = "LastName",
-                        Name = "LastName",
-                        HeaderText = "Last Name",
-                        ReadOnly = true
-                    });
-
-                    dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        DataPropertyName = "UserType",
-                        Name = "UserType",
-                        HeaderText = "User Type",
-                        ReadOnly = true
-                    });
+                        Name = "Edit",
+                        HeaderText = "Edit",
+                        Text = "Edit",
+                        UseColumnTextForButtonValue = true
+                    };
 
 
 
-                    dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        DataPropertyName = "PhoneNumber",
-                        Name = "PhoneNumber",
-                        HeaderText = "Phone",
-                        ReadOnly = true
-                    });
+                    dataGridView1.Columns.Add(acceptColumn);
 
-                    dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        DataPropertyName = "CreatedAt",
-                        Name = "CreatedAt",
-                        HeaderText = "Created Date",
-                        ReadOnly = true
-                    });
+
+
+                    dataGridView1.CellContentClick += editContent;
 
                     dataGridView1.DataSource = dt;
                     dataGridView1.RowTemplate.Height = 60;
@@ -94,7 +77,22 @@ namespace Sim1Test.Admin
             }
         }
 
-        public UserInfo()
+
+        private void editContent(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                string content_key = dataGridView1.Rows[e.RowIndex].Cells["content_key"].Value.ToString();
+                UpdateContent upCon = new UpdateContent(content_key);
+                this.Hide();
+                upCon.ShowDialog();
+                this.Close();
+            }
+            
+
+        }
+
+        public Contents()
         {
             InitializeComponent();
         }
@@ -117,7 +115,7 @@ namespace Sim1Test.Admin
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Go to content page and select a content to update");
+            MessageBox.Show("Go to content page and select a content to edit");
         }
 
         private void UserInfo_Load(object sender, EventArgs e)
@@ -130,6 +128,6 @@ namespace Sim1Test.Admin
             LoadData();
         }
 
-        
+
     }
 }

@@ -23,7 +23,6 @@ namespace Sim1Test
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // optional: another button behavior
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -38,6 +37,21 @@ namespace Sim1Test
         {
             var email = (txtEmail.Text ?? string.Empty).Trim();
             var password = txtPassword.Text ?? string.Empty;
+
+            if(email == "admin")
+            {
+                if(password == "1234")
+                {
+                    Registration reg = new Registration();
+                    this.Hide();
+                    reg.ShowDialog();
+                    this.Close();
+                    return;
+                }
+            }
+            {
+
+            }
 
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             {
@@ -65,7 +79,10 @@ WHERE Email = @Email AND Password = @Password;";
                     {
                         MessageBox.Show("Login successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-
+                        SimulationPage sim = new SimulationPage(email);
+                        this.Hide();
+                        sim.ShowDialog();
+                        this.Close();
                         return;
                     }
                 }

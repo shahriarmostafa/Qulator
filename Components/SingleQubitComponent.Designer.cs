@@ -39,7 +39,7 @@
             // 
             this.pnlCircuit.BackColor = System.Drawing.Color.White;
             this.pnlCircuit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlCircuit.Location = new System.Drawing.Point(44, 78);
+            this.pnlCircuit.Location = new System.Drawing.Point(44, 48);
             this.pnlCircuit.Name = "pnlCircuit";
             this.pnlCircuit.Size = new System.Drawing.Size(483, 96);
             this.pnlCircuit.TabIndex = 6;
@@ -50,7 +50,7 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            this.lblTitle.Location = new System.Drawing.Point(34, 50);
+            this.lblTitle.Location = new System.Drawing.Point(39, 20);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(214, 25);
             this.lblTitle.TabIndex = 0;
@@ -63,7 +63,7 @@
             this.btnX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnX.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnX.ForeColor = System.Drawing.Color.White;
-            this.btnX.Location = new System.Drawing.Point(114, 260);
+            this.btnX.Location = new System.Drawing.Point(114, 240);
             this.btnX.Name = "btnX";
             this.btnX.Size = new System.Drawing.Size(64, 26);
             this.btnX.TabIndex = 1;
@@ -78,7 +78,7 @@
             this.btnY.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnY.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnY.ForeColor = System.Drawing.Color.White;
-            this.btnY.Location = new System.Drawing.Point(184, 260);
+            this.btnY.Location = new System.Drawing.Point(184, 240);
             this.btnY.Name = "btnY";
             this.btnY.Size = new System.Drawing.Size(64, 26);
             this.btnY.TabIndex = 2;
@@ -93,7 +93,7 @@
             this.btnZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnZ.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnZ.ForeColor = System.Drawing.Color.White;
-            this.btnZ.Location = new System.Drawing.Point(254, 260);
+            this.btnZ.Location = new System.Drawing.Point(254, 240);
             this.btnZ.Name = "btnZ";
             this.btnZ.Size = new System.Drawing.Size(64, 26);
             this.btnZ.TabIndex = 3;
@@ -108,7 +108,7 @@
             this.btnH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnH.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnH.ForeColor = System.Drawing.Color.White;
-            this.btnH.Location = new System.Drawing.Point(44, 260);
+            this.btnH.Location = new System.Drawing.Point(44, 240);
             this.btnH.Name = "btnH";
             this.btnH.Size = new System.Drawing.Size(64, 26);
             this.btnH.TabIndex = 4;
@@ -123,7 +123,7 @@
             this.btnMeasure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMeasure.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnMeasure.ForeColor = System.Drawing.Color.White;
-            this.btnMeasure.Location = new System.Drawing.Point(324, 260);
+            this.btnMeasure.Location = new System.Drawing.Point(324, 240);
             this.btnMeasure.Name = "btnMeasure";
             this.btnMeasure.Size = new System.Drawing.Size(104, 26);
             this.btnMeasure.TabIndex = 5;
@@ -138,7 +138,7 @@
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnReset.ForeColor = System.Drawing.Color.White;
-            this.btnReset.Location = new System.Drawing.Point(434, 260);
+            this.btnReset.Location = new System.Drawing.Point(434, 240);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(64, 26);
             this.btnReset.TabIndex = 7;
@@ -150,7 +150,7 @@
             // 
             this.probabilityBarsControl2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
             this.probabilityBarsControl2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.probabilityBarsControl2.Location = new System.Drawing.Point(44, 180);
+            this.probabilityBarsControl2.Location = new System.Drawing.Point(44, 150);
             this.probabilityBarsControl2.Name = "probabilityBarsControl2";
             this.probabilityBarsControl2.Size = new System.Drawing.Size(483, 74);
             this.probabilityBarsControl2.TabIndex = 9;
@@ -180,7 +180,7 @@
             this.Controls.Add(this.btnX);
             this.Controls.Add(this.lblTitle);
             this.Name = "SingleQubitComponent";
-            this.Size = new System.Drawing.Size(574, 330);
+            this.Size = new System.Drawing.Size(574, 285);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sim1Test.Admin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,14 @@ namespace Sim1Test
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Login());
             //Application.Run(new Registration());
-            Application.Run(new SimulationPage("ss@gmail.com"));
+            //Application.Run(new UserInfo());
+            //Application.Run(new Applications());
+            //Application.Run(new AddContent());
+            Application.Run(new Contents());
+
+
+
+
 
         }
     }

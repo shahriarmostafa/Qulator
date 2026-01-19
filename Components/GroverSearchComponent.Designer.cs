@@ -191,7 +191,7 @@
             this.Controls.Add(this.btnSuperposition);
             this.Controls.Add(this.lblTitle);
             this.Name = "GroverSearchComponent";
-            this.Size = new System.Drawing.Size(715, 632);
+            this.Size = new System.Drawing.Size(715, 619);
             this.ResumeLayout(false);
             this.PerformLayout();
 

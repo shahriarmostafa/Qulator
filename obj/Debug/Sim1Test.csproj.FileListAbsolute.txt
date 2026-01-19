@@ -33,3 +33,8 @@ C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.Components.SingleQubitComponen
 C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.Admin.resources
 C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.Admin.UserInfo.resources
 C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.Components.GroverSearchComponent.resources
+C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.SimulationData.resources
+C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.Admin.Applications.resources
+C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.Admin.UpdateContent.resources
+C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.Admin.AddContent.resources
+C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.Admin.Contents.resources

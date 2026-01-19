@@ -116,17 +116,18 @@ namespace Sim1Test.Components
 
         private void btnDiffuser_Click(object sender, EventArgs e)
         {
-            //if (!superpositionReady || !oracleApplied)
-            //{
-            //    MessageBox.Show("Complete: Superposition → Set target → Mark target → 'Diffuse'", "Step missing",
-            //        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
+            if (!superpositionReady || !oracleApplied)
+            {
+                MessageBox.Show("Complete: Superposition → Set target → Mark target → 'Diffuse'", "Step missing",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
 
             GroverDiffuser4Q.ApplyDiffuser(currentState);
-
-            oracleApplied = false;
             UpdateProbabilities();
+            GroverOracle4Q.ApplyOracle(currentState, markedIndex);
             lblStatus.Text = $"Status: Diffuser applied (iteration {iteration})";
             pnlCircuit.Invalidate();
         }

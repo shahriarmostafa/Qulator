@@ -152,7 +152,7 @@
             this.Controls.Add(this.btnMsg00);
             this.Controls.Add(this.lblTitle);
             this.Name = "SuperdenseCodingComponent";
-            this.Size = new System.Drawing.Size(715, 484);
+            this.Size = new System.Drawing.Size(715, 463);
             this.Load += new System.EventHandler(this.SuperdenseCodingComponent_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
