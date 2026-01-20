@@ -53,6 +53,12 @@
     <Compile Include="Admin\AddContent.Designer.cs">
       <DependentUpon>AddContent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\AdminHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminHome.Designer.cs">
+      <DependentUpon>AdminHome.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Applications.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,11 +77,11 @@
     <Compile Include="Admin\UpdateContent.Designer.cs">
       <DependentUpon>UpdateContent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\UsersInfo.cs">
+    <Compile Include="Admin\UserInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin\UsersInfo.Designer.cs">
-      <DependentUpon>UsersInfo.cs</DependentUpon>
+    <Compile Include="Admin\UserInfo.Designer.cs">
+      <DependentUpon>UserInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Algorithms\BellStates.cs" />
     <Compile Include="Algorithms\GroverSearch\GroverDiffuser4Q.cs" />
@@ -174,6 +180,9 @@
     <EmbeddedResource Include="Admin\AddContent.resx">
       <DependentUpon>AddContent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin\AdminHome.resx">
+      <DependentUpon>AdminHome.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\Applications.resx">
       <DependentUpon>Applications.cs</DependentUpon>
     </EmbeddedResource>
@@ -183,8 +192,8 @@
     <EmbeddedResource Include="Admin\UpdateContent.resx">
       <DependentUpon>UpdateContent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\UsersInfo.resx">
-      <DependentUpon>UsersInfo.cs</DependentUpon>
+    <EmbeddedResource Include="Admin\UserInfo.resx">
+      <DependentUpon>UserInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\BellStateComponent.resx">
       <DependentUpon>BellStateComponent.cs</DependentUpon>

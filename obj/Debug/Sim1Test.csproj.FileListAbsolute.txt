@@ -38,3 +38,4 @@ C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.Admin.Applications.resources
 C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.Admin.UpdateContent.resources
 C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.Admin.AddContent.resources
 C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.Admin.Contents.resources
+C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.Admin.AdminHome.resources

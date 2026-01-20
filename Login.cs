@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sim1Test.Admin;
+using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -42,9 +43,9 @@ namespace Sim1Test
             {
                 if(password == "1234")
                 {
-                    Registration reg = new Registration();
+                    AdminHome aH = new AdminHome();
                     this.Hide();
-                    reg.ShowDialog();
+                    aH.ShowDialog();
                     this.Close();
                     return;
                 }
