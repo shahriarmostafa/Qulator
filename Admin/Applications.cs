@@ -227,10 +227,15 @@ WHERE Email = @Email;";
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            UserInfo userInfo = new UserInfo();
+            //UserInfo userInfo = new UserInfo();
+            //this.Hide();
+            //userInfo.ShowDialog();
+            //this.Close ();
+
+            AdminHome adminHome = new AdminHome();
             this.Hide();
-            userInfo.ShowDialog();
-            this.Close ();
+            adminHome.ShowDialog();
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)

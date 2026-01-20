@@ -65,9 +65,9 @@ namespace Sim1Test.Admin
 
         private void button5_Click(object sender, EventArgs e)
         {
-            UserInfo ur = new UserInfo();
+            AdminHome adminHome = new AdminHome();
             this.Hide();
-            ur.ShowDialog();
+            adminHome.ShowDialog();
             this.Close();
         }
 

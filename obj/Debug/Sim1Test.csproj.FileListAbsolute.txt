@@ -39,3 +39,30 @@ C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.Admin.UpdateContent.resources
 C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.Admin.AddContent.resources
 C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.Admin.Contents.resources
 C:\Users\AC\Desktop\C#\Qulator\obj\Debug\Sim1Test.Admin.AdminHome.resources
+F:\C# project F\Qulator\bin\Debug\Sim1Test.exe.config
+F:\C# project F\Qulator\bin\Debug\Sim1Test.exe
+F:\C# project F\Qulator\bin\Debug\Sim1Test.pdb
+F:\C# project F\Qulator\obj\Debug\Sim1Test.csproj.AssemblyReference.cache
+F:\C# project F\Qulator\obj\Debug\Sim1Test.Admin.AddContent.resources
+F:\C# project F\Qulator\obj\Debug\Sim1Test.Admin.AdminHome.resources
+F:\C# project F\Qulator\obj\Debug\Sim1Test.Admin.Applications.resources
+F:\C# project F\Qulator\obj\Debug\Sim1Test.Admin.Contents.resources
+F:\C# project F\Qulator\obj\Debug\Sim1Test.Admin.UpdateContent.resources
+F:\C# project F\Qulator\obj\Debug\Sim1Test.Admin.UserInfo.resources
+F:\C# project F\Qulator\obj\Debug\Sim1Test.Components.BellStateComponent.resources
+F:\C# project F\Qulator\obj\Debug\Sim1Test.Components.GroverSearchComponent.resources
+F:\C# project F\Qulator\obj\Debug\Sim1Test.Components.ProbabilityBarsControl.resources
+F:\C# project F\Qulator\obj\Debug\Sim1Test.Components.SingleQubitComponent.resources
+F:\C# project F\Qulator\obj\Debug\Sim1Test.Components.SuperdenseCodingComponent.resources
+F:\C# project F\Qulator\obj\Debug\Sim1Test.Components.TeleportationComponent.resources
+F:\C# project F\Qulator\obj\Debug\Sim1Test.Login.resources
+F:\C# project F\Qulator\obj\Debug\Sim1Test.Properties.Resources.resources
+F:\C# project F\Qulator\obj\Debug\Sim1Test.Registration.resources
+F:\C# project F\Qulator\obj\Debug\Sim1Test.SimulationPage.resources
+F:\C# project F\Qulator\obj\Debug\Sim1Test.WeatherForm.resources
+F:\C# project F\Qulator\obj\Debug\Sim1Test.csproj.GenerateResource.cache
+F:\C# project F\Qulator\obj\Debug\Sim1Test.csproj.CoreCompileInputs.cache
+F:\C# project F\Qulator\obj\Debug\Sim1Test.exe
+F:\C# project F\Qulator\obj\Debug\Sim1Test.pdb
+F:\C# project F\Qulator\obj\Debug\Sim1Test.exe.config
+F:\C# project F\Qulator\obj\Debug\Sim1Test.Home.resources

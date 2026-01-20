@@ -223,7 +223,7 @@ namespace Sim1Test
                 MessageBox.Show("You are not a pro user to access. Apply for pro");
                 return;
             }
-            WeatherForm weatherform = new WeatherForm();
+            WeatherForm weatherform = new WeatherForm(email);
             this.Hide();
             weatherform.ShowDialog();
             this.Close();
@@ -269,6 +269,19 @@ namespace Sim1Test
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            Login lg = new Login();
+            this.Hide();
+            lg.ShowDialog();
+            this.Close();
+        }
+
+        private void mainContentPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void SimulationPage_Load(object sender, EventArgs e)
         {
 
         }

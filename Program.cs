@@ -15,13 +15,15 @@ namespace Sim1Test
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            //Application.Run(new Login());
             //Application.Run(new Registration());
             //Application.Run(new UserInfo());
             //Application.Run(new Applications());
             //Application.Run(new AddContent());
             //Application.Run(new Contents());
-
+            Application.Run(new Home());
+            //Application.Run(new SimulationPage(" as@gmail.com"));
+            //Application.Run(new AdminHome());
 
 
 

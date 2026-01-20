@@ -101,10 +101,7 @@ namespace Sim1Test.Admin
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Applications application = new Applications();
-            this.Hide();
-            application.ShowDialog();
-            this.Close();
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -130,6 +127,17 @@ namespace Sim1Test.Admin
             LoadData();
         }
 
-        
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            AdminHome adminHome = new AdminHome();
+            this.Hide();
+            adminHome.ShowDialog();
+            this.Close();
+        }
     }
 }

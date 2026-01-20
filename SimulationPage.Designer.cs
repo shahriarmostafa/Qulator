@@ -45,7 +45,7 @@ namespace Sim1Test
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(1080, 60);
+            this.lblTitle.Size = new System.Drawing.Size(1091, 60);
             this.lblTitle.TabIndex = 2;
             this.lblTitle.Text = "Hi, Name of the User";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -67,7 +67,7 @@ namespace Sim1Test
             this.sidebarPanel.ForeColor = System.Drawing.Color.White;
             this.sidebarPanel.Location = new System.Drawing.Point(0, 60);
             this.sidebarPanel.Name = "sidebarPanel";
-            this.sidebarPanel.Size = new System.Drawing.Size(251, 495);
+            this.sidebarPanel.Size = new System.Drawing.Size(251, 585);
             this.sidebarPanel.TabIndex = 0;
             // 
             // groverSearchButton
@@ -221,20 +221,25 @@ namespace Sim1Test
             this.mainContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainContentPanel.Location = new System.Drawing.Point(251, 60);
             this.mainContentPanel.Name = "mainContentPanel";
-            this.mainContentPanel.Size = new System.Drawing.Size(829, 495);
+            this.mainContentPanel.Size = new System.Drawing.Size(840, 585);
             this.mainContentPanel.TabIndex = 1;
+            this.mainContentPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.mainContentPanel_Paint);
             // 
             // SimulationPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1080, 555);
+            this.ClientSize = new System.Drawing.Size(1091, 645);
             this.Controls.Add(this.mainContentPanel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.sidebarPanel);
             this.Controls.Add(this.lblTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "SimulationPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quantum Simulator - Main Page";
+            this.Load += new System.EventHandler(this.SimulationPage_Load);
             this.sidebarPanel.ResumeLayout(false);
             this.sidebarPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

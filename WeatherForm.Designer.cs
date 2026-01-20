@@ -85,6 +85,7 @@
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(915, 72);
             this.pnlHeader.TabIndex = 0;
+            this.pnlHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlHeader_Paint);
             // 
             // button1
             // 
@@ -98,6 +99,7 @@
             this.button1.TabIndex = 8;
             this.button1.Text = "Back";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblTitle
             // 
@@ -648,6 +650,7 @@
             this.Controls.Add(this.lblFinalPredictionLabel);
             this.Controls.Add(this.lblFinalPredictionValue);
             this.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.MaximizeBox = false;
             this.Name = "WeatherForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Weather Forecast Simulator";

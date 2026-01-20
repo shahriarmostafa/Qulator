@@ -99,9 +99,9 @@ namespace Sim1Test.Admin
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Applications application = new Applications();
+            AddContent ac = new AddContent();
             this.Hide();
-            application.ShowDialog();
+            ac.ShowDialog();
             this.Close();
         }
 
@@ -115,7 +115,11 @@ namespace Sim1Test.Admin
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Go to content page and select a content to edit");
+            //MessageBox.Show("Go to content page and select a content to edit");
+            UpdateContent uc = new UpdateContent("yourContentKey");
+            this.Hide();
+            uc.ShowDialog();
+            this.Close();
         }
 
         private void UserInfo_Load(object sender, EventArgs e)
@@ -128,6 +132,17 @@ namespace Sim1Test.Admin
             LoadData();
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            AdminHome adminHome = new AdminHome();
+            this.Hide();
+            adminHome.ShowDialog();
+            this.Close();
+        }
     }
 }

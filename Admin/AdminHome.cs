@@ -58,5 +58,43 @@ namespace Sim1Test.Admin
         {
 
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            UserInfo ur = new UserInfo();
+            this.Hide();
+            ur.ShowDialog();
+            this.Close();
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            Contents ct = new Contents();
+            this.Hide();
+            ct.ShowDialog();
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AddContent ac = new AddContent();
+            this.Hide();
+            ac.ShowDialog();
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
+            UpdateContent uc = new UpdateContent("yourContentKey");
+            this.Hide();
+            uc.ShowDialog();
+            this.Close();
+        }
     }
 }

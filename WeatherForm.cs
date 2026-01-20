@@ -11,9 +11,11 @@ namespace Sim1Test
 
         private WeatherInput _currentInput;
         private CompleteForecastAnalysis _currentAnalysis;
+        private string email;
 
-        public WeatherForm()
+        public WeatherForm(string email)
         {
+            this.email = email;
             InitializeComponent();
         }
 
@@ -130,6 +132,19 @@ namespace Sim1Test
             }
 
             lblFinalPredictionValue.Text = _currentAnalysis.detailedPrediction;
+        }
+
+        private void pnlHeader_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SimulationPage sm = new SimulationPage(email);
+            this.Hide();
+            sm.ShowDialog();
+            this.Close();
         }
     }
 }
